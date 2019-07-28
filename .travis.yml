@@ -3,6 +3,7 @@ after_script:
   - ./_travis.sh
 after_success: ~
 before_install: 
+  - "npm install -g gulp"
   - "sudo apt-get install libnotify-bin"
 before_script: 
   - "export TZ='Asia/Shanghai'"
