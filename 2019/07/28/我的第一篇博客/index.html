@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang>
+<html lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.9.0">
     <!--Setting-->
     <meta charset="UTF-8">
@@ -44,6 +44,8 @@
     
 
 
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+
 
 <link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
 <link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
@@ -87,7 +89,7 @@
         <div class="branding">
         	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
             
-                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+                <h2> 青春须早为，岂能长少年。 </h2>
             
     	</div>
     </div>
@@ -106,7 +108,7 @@
                     <ul class="menu">
                         
                             <li role="presentation" class="text-center">
-                                <a href="/"><i class="fa "></i>Home</a>
+                                <a href="/"><i class="fa "></i>首页</a>
                             </li>
                         
                             <li role="presentation" class="text-center">
@@ -180,7 +182,7 @@
     <div class="post-footer">
         <div>
             
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Qibotian</a>
             
         </div>
         <div>
@@ -202,28 +204,22 @@
 
     <div id="comments">
         
-	
-    <div id="vcomments" class="valine"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="/assets/valine.min.js"></script>
-
-    <script>
-        new Valine({
-            av: AV,
-            el: '#vcomments',
-            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
-            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
-            placeholder: '说点什么吧',
-            notify: false,
-            verify: true,
-            avatar: 'mm',
-            meta: 'nick,mail'.split(','),
-            pageSize: '10',
-            path: window.location.pathname,
-            lang: ''.toLowerCase()
-        })
-    </script>
-
+	<script type="text/javascript" src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: window.location.pathname,
+        owner:"qibotian",
+        repo:"git@github.com:qibotian/gitment.github.io.git",
+        oauth: {
+          client_id:"be0a9c83797d718940a5",
+          client_secret:"a8ffaaf88163d6d82cbb07df6b7e7d8d508b46de"
+        },
+        perPage:"10",
+    });
+    gitment.render('comments');
+</script>
 
     </div>
 
@@ -235,7 +231,7 @@
                 
                     <aside id="article-toc" role="navigation" class="col-md-4">
     <div class="widget">
-        <h3 class="title">Table of Contents</h3>
+        <h3 class="title">文章目录</h3>
         
             <p>暂无目录</p>
         
@@ -273,7 +269,7 @@
                 <span>Copyright &copy; 2017
                 </span> |
                 <span>
-                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                    Powered by <a href="//qibotian.github.io/" class="copyright-links" target="_blank" rel="nofollow">Qibotian | </a> <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
                 </span> |
                 <span>
                     Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
