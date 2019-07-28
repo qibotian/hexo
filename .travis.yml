@@ -1,38 +1,28 @@
+--- 
+after_script: 
+  - ./_travis.sh
+after_success: ~
+before_install: 
+  - "sudo apt-get install libnotify-bin"
+before_script: 
+  - "export TZ='Asia/Shanghai'"
+  - "npm install -g gulp"
+  - "chmod +x _travis.sh"
+branches: 
+  only: 
+    - blog-source
+cache: 
+  directories: 
+    - node_modules
+env: 
+  global: 
+    - 
+      GH_REF: github.com/qibotian/qibotian.github.io.git
+install: 
+  - "npm install"
 language: node_js
 node_js: stable
-
-sudo: false
-
-#cache 启用缓存，加快构建速度
-cache:
-  directories:
-    - "node_modules"
-
-# S: Build Lifecycle
-
-before_install:
-  - sudo apt-get install libnotify-bin
-
-install:
-  - npm install
-
-before_script:
-  - export TZ='Asia/Shanghai'
-  - npm install -g gulp
-  - chmod +x _travis.sh
-
-script:
-  - hexo clean && hexo g
+script: 
+  - "hexo clean && hexo g"
   - gulp
-
-after_success:
-
-after_script:
-  - ./_travis.sh
-
-branches:
-  only:
-    - blog-source
-env:
-  global:
-    - GH_REF: GH_REF: github.com/qibotian/qibotian.github.io.git
+sudo: false
