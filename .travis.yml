@@ -28,4 +28,4 @@ branches:
     - blog-source
 env:
  global:
-   - QBT_REF: qibotian/qibotian.github.io.git
+   - QBT_REF: github.com/qibotian/qibotian.github.io.git
