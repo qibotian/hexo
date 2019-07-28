@@ -53,7 +53,7 @@ after_script:
 
 branches:
   only:
-    - master
+    - blog-source
 env:
  global:
    - GH_REF: git@github.com:qibotian/qibotian.github.io.git
