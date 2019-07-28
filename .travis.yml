@@ -20,7 +20,7 @@ after_script:
   - git config user.email "hashcoder@163.com"
   - git add .
   - git commit -m "Update docs"
-  - git push --force --quiet "https://${9ab6ab0be45343d36565c90555a60b25f4a0a8cf}@${QBT_REF}" master:master
+  - git push --force --quiet "https://${git-token}@${QBT_REF}" master:master
 # E: Build LifeCycle
 
 branches:
