@@ -1,60 +1,31 @@
 language: node_js
-node_js:
-    - "8"
-
-sudo: false
-
-#cache
-cache:
-  directories:
-    - "node_modules"
-
-notifications:
-  # 钉钉机器人消息推送部署结果
-  webhooks:
-    urls:
-      - https://oapi.dingtalk.com/robot/send?access_token=${DINGDING_ACCESS_TOKEN}
-    on_success: change
-    on_failure: always
-
-  # 邮件发送部署结果通知
-  email:
-    recipients:
-      - snippet@91h5.cc
-    on_success: change
-    on_failure: always
+node_js: 
+  - "8"
 
 # S: Build Lifecycle
-before_install:
-  - sudo apt-get install libnotify-bin
-
 install:
   - npm install
-#  - gem install travis
-#  - travis login --pro --github-token ${GH_TOKEN}
 
-before_script:
-  - export TZ='Asia/Shanghai'
-  - npm install -g gulp
-  - chmod +x _travis.sh
+
+#before_script:
+ # - npm install -g gulp
 
 script:
-  - hexo clean && hexo g
-  - gulp
-
-after_success:
- # - LAST_BUILD_NUMBER=68
- # - for i in $(seq 1 $LAST_BUILD_NUMBER ); do  travis logs $i --delete --force ; done
+  - hexo g
 
 after_script:
-  - ./_travis.sh
-
+  - cd ./public
+  - git init
+  - git config user.name "qibotian"
+  - git config user.email "hashcoder@163.com"
+  - git add .
+  - git commit -m "Update docs"
+  - git push --force --quiet "https://${9ab6ab0be45343d36565c90555a60b25f4a0a8cf}@${QBT_REF}" master:master
 # E: Build LifeCycle
 
 branches:
   only:
-    - blog-source
+    - blog-resource
 env:
  global:
-   - GH_REF: git@github.com:qibotian/qibotian.github.io.git
-
+   - QBT_REF: qibotian/qibotian.github.io.git
