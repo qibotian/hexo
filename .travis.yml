@@ -1,6 +1,11 @@
 language: node_js
 node_js: 
   - "8"
+  
+cache:
+  apt: true
+  directories:
+    - node_modules 
 
 # S: Build Lifecycle
 install:
@@ -14,13 +19,17 @@ script:
   - hexo g
 
 after_script:
+  - git clone https://${GH_REF} .deploy_git
+  - cd .deploy_git
+  - git checkout master
+  - cd ../
+  - mv .deploy_git/.git/ ./public/ 
   - cd ./public
-  - git init
   - git config user.name "qibotian"
   - git config user.email "hashcoder@163.com"
   - git add .
   - git commit -m "Update docs"
-  - git push --force --quiet "https://${git-token}@${QBT_REF}" master:master
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 # E: Build LifeCycle
 
 branches:
@@ -28,4 +37,4 @@ branches:
     - blog-source
 env:
  global:
-   - QBT_REF: github.com/qibotian/qibotian.github.io.git
+   - GH_REF: github.com/qibotian/qibotian.github.io.git
