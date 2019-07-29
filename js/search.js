@@ -104,15 +104,17 @@
     }
 
     function filter(art, type) {
-        var keyword = searchWord.value;
-        var index = art.indexOf(keyword);
-        var artRe = art.replace(keyword, '<b>' + keyword + '</b>');
-        if (type == 'title') {
-            return artRe
-        }
-        if (type == 'content' && index > 0) {
-            return artRe.substr(index - 15, 45);
-        }
+		if(art){
+			var keyword = searchWord.value;
+			var index = art.indexOf(keyword);
+			var artRe = art.replace(keyword, '<b>' + keyword + '</b>');
+			if (type == 'title') {
+				return artRe
+			}
+			if (type == 'content' && index > 0) {
+				return artRe.substr(index - 15, 45);
+			}
+		}
     }
 
     function search(e) {
