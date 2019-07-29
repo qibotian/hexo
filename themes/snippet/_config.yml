@@ -55,7 +55,7 @@ jsonContent:
   posts:
     title: true
     text: false
-    content: true
+    content: false
     categories: false
     tags: false
 
