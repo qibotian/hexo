@@ -1,28 +1,40 @@
---- 
-after_script: 
-  - ./_travis.sh
-after_success: ~
-before_install: 
-  - "sudo apt-get install libnotify-bin"
-before_script: 
-  - "export TZ='Asia/Shanghai'"
-  - "npm install -g gulp"
-  - "chmod +x _travis.sh"
-branches: 
-  only: 
-    - blog-source
-cache: 
-  directories: 
-    - node_modules
-env: 
-  global: 
-    - 
-      GH_REF: github.com/qibotian/qibotian.github.io.git
-install: 
-  - "npm install"
 language: node_js
-node_js: stable
-script: 
-  - "hexo clean && hexo g"
-  - gulp
-sudo: false
+node_js: 
+  - "8"
+  
+cache:
+  apt: true
+  directories:
+    - node_modules 
+
+# S: Build Lifecycle
+install:
+  - npm install
+
+
+#before_script:
+ # - npm install -g gulp
+
+script:
+  - hexo g
+
+after_script:
+  - git clone https://${GH_REF} .deploy_git
+  - cd .deploy_git
+  - git checkout master
+  - cd ../
+  - mv .deploy_git/.git/ ./public/ 
+  - cd ./public
+  - git config user.name "qibotian"
+  - git config user.email "hashcoder@163.com"
+  - git add .
+  - git commit -m "Update docs"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+# E: Build LifeCycle
+
+branches:
+  only:
+    - blog-source
+env:
+ global:
+   - GH_REF: github.com/qibotian/qibotian.github.io.git
