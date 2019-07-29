@@ -54,7 +54,7 @@ jsonContent:
   searchGoogle: false
   posts:
     title: true
-    text: true
+    text: false
     content: true
     categories: false
     tags: false
