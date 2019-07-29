@@ -1,0 +1,16 @@
+<script type="text/javascript" src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: window.location.pathname,
+        owner:"<%= theme.gitment.owner%>",
+        repo:"<%= theme.gitment.repo%>",
+        oauth: {
+          client_id:"<%= theme.gitment.client_id%>",
+          client_secret:"<%= theme.gitment.client_secret%>"
+        },
+        perPage:"<%= theme.gitment.perPage%>",
+    });
+    gitment.render('comments');
+</script>
