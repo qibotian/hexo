@@ -1,7 +1,7 @@
 ---
 title: Hell Hexo
 date: 2019-07-31
-categories: ['工具']
+categories: ['MYSQL']
 tags: ['blog', 'Hexo']
 comments: true
 ---

@@ -1,7 +1,7 @@
 ---
 title: Java基础
 date: 2019-08-01
-categories: ['后端']
+categories: ['JAVA']
 tags: ['Java']
 comments: true
 ---
