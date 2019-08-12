@@ -10,11 +10,11 @@ menu:
 - page: home
   url: /
   icon:
-- page: 后端
-  url: /categories/后端/
+- page: JAVA
+  url: /categories/JAVA/
   icon:
-- page: 前端
-  url: /categories/前端/
+- page: MYSQL
+  url: /categories/MYSQL/
   icon:
 - page: 工具
   url: /categories/工具/
@@ -31,8 +31,8 @@ rss: /atom.xml
 
 ## Carousel
 carousel:
-  img: 
-  url: 
+  img:
+  url:
 
 # 各个小工具的设置
 
@@ -50,7 +50,7 @@ widgets:
 ## 搜索
 jsonContent:
 ## 是否启用本地搜索
-  searchLocal: true  
+  searchLocal: true
   searchGoogle: false
   posts:
     title: true
@@ -151,8 +151,8 @@ reward:
 ## Valine评论
 valine:
    enable: flase
-   appId: 
-   appKey: 
+   appId:
+   appKey:
    placeholder: 说点什么吧
    notify: false
    verify: true
