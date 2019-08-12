@@ -1,6 +1,6 @@
 ---
 title: Hell Hexo
-date: 2019-09-29
+date: 2019-07-31
 categories: ['工具']
 tags: ['blog', 'Hexo']
 comments: true

@@ -1,6 +1,6 @@
 ---
 title: MySQL 如何查询死锁
-date: 2019-09-29
+date: 2019-08-12
 categories: ['MySQL']
 tags: ['MySQL','死锁',]
 comments: true
