@@ -1,7 +1,7 @@
 ---
 title: Hell Hexo
 date: 2019-07-31
-categories: ['MYSQL']
+categories: ['工具']
 tags: ['blog', 'Hexo']
 comments: true
 ---
@@ -9,7 +9,7 @@ comments: true
 ```
 title: Hell Hexo
 date: 2019-09-29
-categories: ['工具']
+categories: ['JAVA','MySQL','工具']
 tags: ['blog', 'Hexo']
 comments: true
 
