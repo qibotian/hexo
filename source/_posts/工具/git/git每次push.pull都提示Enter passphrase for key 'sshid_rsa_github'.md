@@ -24,10 +24,8 @@ git每次push.pull都提示Enter passphrase for key 'sshid_rsa_github'， 这是
     # ssh-add -k /c/.ssh/id_rsa_github_XXXXX
 
     //如果此时提示：Could not open a connection to your authentication agent.
-    //继续输入
+    //继续输入,如果不提示则跳过
     # ssh-agent bash
-
-    //重新输入
     # ssh-add -k /c/.ssh/id_rsa_github_XXXXX
 
     //此时会提示 Enter passphrase for /c/.ssh/id_rsa_github_XXXXX:
