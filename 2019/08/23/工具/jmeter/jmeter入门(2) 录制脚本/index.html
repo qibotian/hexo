@@ -21,8 +21,7 @@
     <meta name="keywords" content="jmeter">
 
 
-    <meta name="description" content="jemter 官网地址  https://jmeter.apache.org/
-jmeter 介绍  jmeter是一款纯java开发的用于做 功能测试 和性能测试 的开源软件。它最初是为了测试...">
+    <meta name="description" content="前言">
 
 
 
@@ -34,7 +33,7 @@ jmeter 介绍  jmeter是一款纯java开发的用于做 功能测试 和性能�
     <!--Title-->
 
 
-<title>jmeter入门(一) 介绍和安装 | 齐博田的个人博客</title>
+<title>jmeter入门(二) 录制脚本 | 齐博田的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="齐博田的个人博客" type="application/atom+xml">
@@ -141,9 +140,9 @@ jmeter 介绍  jmeter是一款纯java开发的用于做 功能测试 和性能�
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="jmeter入门(一) 介绍和安装">
+        <h1 id="jmeter入门(二) 录制脚本">
             
-	            jmeter入门(一) 介绍和安装
+	            jmeter入门(二) 录制脚本
             
         </h1>
         <div class="post-meta">
@@ -179,58 +178,7 @@ jmeter 介绍  jmeter是一款纯java开发的用于做 功能测试 和性能�
     </div>
     
     <div class="post-body post-content">
-        <h1 id="jemter-官网地址"><a href="#jemter-官网地址" class="headerlink" title="jemter 官网地址"></a>jemter 官网地址</h1><p>  <a href="https://jmeter.apache.org/" target="_blank" rel="noopener">https://jmeter.apache.org/</a></p>
-<h1 id="jmeter-介绍"><a href="#jmeter-介绍" class="headerlink" title="jmeter 介绍"></a>jmeter 介绍</h1><p>  jmeter是一款纯java开发的用于做 功能测试 和性能测试 的开源软件。它最初是为了测试web应用程序而设计的，后来逐渐扩展到其他应用程序。</p>
-<p>  <img src="/2019/08/23/工具/jmeter/jmeter入门(一) 介绍和安装/what_is_jmeter.png" alt="jmeter入门(一) 介绍和安装"></p>
-<h1 id="jmeter-可以用来做什么"><a href="#jmeter-可以用来做什么" class="headerlink" title="jmeter 可以用来做什么"></a>jmeter 可以用来做什么</h1><p>  Apache JMeter 可以用来测试静态和动态资源以及web应用程序的性能。他可以用来模拟 服务器,服务器组，网络或者对象上的重负载(heavy load) ,以测试其健壮性（strength）或者分析其在不同负载类型（load type）情况下的整体性能(overall performance)。</p>
-<p>  JMeter 有以下几种特性(features):  </p>
-<ul>
-<li>可以用来加载和测试许多种不同的应用程序（application）/服务(server)/协议类型(protocal type)..<ul>
-<li>WEB-HTTP, HTTPS(java, NodeJs, PHP, APS.NET)</li>
-<li>SOAP/REST Webservices</li>
-<li>FTP</li>
-<li>Database via JDBC</li>
-<li>LDAP</li>
-<li>Message-oriented middleware (MOM) via JMS</li>
-<li>Mail - SMTP(S), POP3(S) and IMAP(S)</li>
-<li>Native commands or shell scripts</li>
-<li>TCP</li>
-<li>Java Objects</li>
-</ul>
-</li>
-<li>功能齐全的IDE：允许快速记录（record），构建(build)，和调试(debug)测试计划。</li>
-<li>客户端模式（CLI model）可以从任何java友好操作系统(Java compatible OS)加载测试。</li>
-<li>一个完整的，随时可以呈现的HTML报告(HTML report)</li>
-<li>通过从当前流行的响应格式(HTML, JSON, XML或任何文本格式)中提取数据，可以用来很简单关联测试（Easy Correlation）</li>
-<li>高可移植性(Complete Portability), 纯Java(100% Java purity)</li>
-<li>多线程框架， 允许多线程同时(concurrent)取样，也允许多个线程组同时对不同的功能取样</li>
-<li>可缓存（cache），脱机分析/重放(offline analysis/replaying) 测试结果。</li>
-<li>高可扩展(Hightly Extensible)性:<ul>
-<li>可插拔采样器 (Pluggable Sampler)，允许无限的测试能力</li>
-<li>脚本话采样器 (Scriptabel Sampler)。</li>
-<li>可插拔计时器（Pluggable timer），允许选择多个负载统计数据（Several load statistics）</li>
-<li>数据分析和可视化插件（Visualization plugin）有强大的个性化定制(personalzation)和扩展能力(great extensibility)。</li>
-<li>可以使用函数（Function）进行动态参数化，或者生产参数</li>
-<li>可以使用Maven, Gradle, Jenkins第三方开源库轻松的持续集成(Continuous Integration)。</li>
-</ul>
-</li>
-</ul>
-<h1 id="JMeter-下载及安装"><a href="#JMeter-下载及安装" class="headerlink" title="JMeter 下载及安装"></a>JMeter 下载及安装</h1><p>  可以通过点击 <a href="https://jmeter.apache.org/download_jmeter.cgi" target="_blank" rel="noopener">官网下载页面</a> 直接下载最新的JMeter安装包。  </p>
-<ul>
-<li><p>下载完后，我们将得到的是一个免安装的压缩包，解压这个压缩包</p>
-<p><img src="/2019/08/23/工具/jmeter/jmeter入门(一) 介绍和安装/Jmeter_download.png" alt="JMeter 下载页面"></p>
-</li>
-<li><p>下载完后，我们将得到的是一个免安装的压缩包,我们解压后得到以下文件：<br><img src="/2019/08/23/工具/jmeter/jmeter入门(一) 介绍和安装/Jmeter_file_list.png" alt="JMeter 文件列表"></p>
-</li>
-<li><p>首先我们得确保我们本地的jdk环境在1.8或以上，我们在CMD上运行 <code>java -version</code> 查看jdk版本。<br><img src="/2019/08/23/工具/jmeter/jmeter入门(一) 介绍和安装/Jdk_version.png" alt="查看jdk版本"></p>
-</li>
-<li><p>我们双击JMeter安装目录下 <code>bin\ApacheJMeter.jar</code>,即可运行JMeter。当然在windowns下，我们也可以双击<code>bin\jmeter.bat</code>文件运行JMeter。<br><img src="/2019/08/23/工具/jmeter/jmeter入门(一) 介绍和安装/Bin_apacheJMeter.png" alt="JMeter 运行文件"></p>
-</li>
-<li><p>JMeter首页<br><img src="/2019/08/23/工具/jmeter/jmeter入门(一) 介绍和安装/Jmeter_index.png" alt="JMeter 首页"></p>
-</li>
-</ul>
-<h1 id="下章节内容"><a href="#下章节内容" class="headerlink" title="下章节内容"></a>下章节内容</h1><p>  在下一章节，我们将介绍如何使用JMeter进行测试用例的录制(record)。</p>
-
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1>
     </div>
     
     <div class="post-footer">
@@ -247,15 +195,15 @@ jmeter 介绍  jmeter是一款纯java开发的用于做 功能测试 和性能�
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/08/23/工具/jmeter/jmeter 录制脚本/" class="pre-post btn btn-default" title='jmeter 录制脚本'>
+        <a href="/2019/08/23/工具/jmeter/jmeter入门(1) 介绍和安装/" class="pre-post btn btn-default" title='jmeter入门(一) 介绍和安装'>
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">jmeter 录制脚本</span>
+            <span class="hidden-xs">jmeter入门(一) 介绍和安装</span>
         </a>
     
     
-        <a href="/2019/08/16/工具/git/git每次push.pull都提示Enter passphrase for key 'sshid_rsa_github'/" class="next-post btn btn-default" title='git每次push.pull都提示Enter passphrase for key 'sshid_rsa_github''>
+        <a href="/2019/08/23/工具/jmeter/jmeter入门(3) 联合测试/" class="next-post btn btn-default" title='jmeter BeanShell 脚本的使用'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">git每次push.pull都提示Enter passphrase for key 'sshid_rsa_github'</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">jmeter BeanShell 脚本的使用</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -292,7 +240,7 @@ jmeter 介绍  jmeter是一款纯java开发的用于做 功能测试 和性能�
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jemter-官网地址"><span class="toc-text">jemter 官网地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#jmeter-介绍"><span class="toc-text">jmeter 介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#jmeter-可以用来做什么"><span class="toc-text">jmeter 可以用来做什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JMeter-下载及安装"><span class="toc-text">JMeter 下载及安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下章节内容"><span class="toc-text">下章节内容</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li></ol>
         
     </div>
 </aside>
