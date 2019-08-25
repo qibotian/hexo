@@ -49,16 +49,22 @@ comments: true
 
 # JMeter 下载及安装
   可以通过点击 [官网下载页面](https://jmeter.apache.org/download_jmeter.cgi) 直接下载最新的JMeter安装包。  
-  ![jmeter入门(一) 介绍和安装](Jmeter_download.png)
 
+  * 下载完后，我们将得到的是一个免安装的压缩包，解压这个压缩包
 
+  ![JMeter 下载页面](Jmeter_download.png)
 
+  * 下载完后，我们将得到的是一个免安装的压缩包,我们解压后得到以下文件：  
+  ![JMeter 文件列表](Jmeter_file_list.png)
 
+  * 首先我们得确保我们本地的jdk环境在1.8或以上，我们在CMD上运行 `java -version` 查看jdk版本。  
+  ![查看jdk版本](Jdk_version.png)
 
+  * 我们双击JMeter安装目录下 `bin\ApacheJMeter.jar`,即可运行JMeter。当然在windowns下，我们也可以双击`bin\jmeter.bat`文件运行JMeter。  
+  ![JMeter 运行文件](Bin_apacheJMeter.png)
 
+  * JMeter首页  
+  ![JMeter 首页](Jmeter_index.png)
 
-
-
-# 安装下载
-
-# 参考文档
+# 下章节内容
+  在下一章节，我们将介绍如何使用JMeter进行测试用例的录制(record)。
