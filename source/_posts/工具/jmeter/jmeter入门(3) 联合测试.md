@@ -1,5 +1,5 @@
 ---
-title: jmeter BeanShell 脚本的使用
+title: jmeter入门(3) 联合测试
 date: 2019-08-23
 categories: ['工具']
 tags: ['jmeter']
