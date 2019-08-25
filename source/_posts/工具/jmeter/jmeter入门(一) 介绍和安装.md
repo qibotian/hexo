@@ -14,7 +14,7 @@ comments: true
 
   jmeter是一款纯java开发的用于做 功能测试 和性能测试 的开源软件。它最初是为了测试web应用程序而设计的，后来逐渐扩展到其他应用程序。
 
-  ![jmeter入门(一) 介绍和安装](jmeter入门(一) 介绍和安装/what_is_jmeter.png)
+  ![jmeter入门(一) 介绍和安装](what_is_jmeter.png)
 
 # jmeter 可以用来做什么
 
@@ -49,8 +49,7 @@ comments: true
 
 # JMeter 下载及安装
   可以通过点击 [官网下载页面](https://jmeter.apache.org/download_jmeter.cgi) 直接下载最新的JMeter安装包。  
-  ![jmeter入门(一) 介绍和安装](jmeter入门(一) 介绍和安装/Jmeter_download.png)
-
+  ![jmeter入门(一) 介绍和安装](Jmeter_download.png)
 
 
 
