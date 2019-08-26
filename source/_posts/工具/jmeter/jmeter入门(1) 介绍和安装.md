@@ -1,5 +1,5 @@
 ---
-title: jmeter入门(一) 介绍和安装
+title: jmeter入门(1) 介绍和安装
 date: 2019-08-23
 categories: ['工具']
 tags: ['jmeter']
@@ -65,6 +65,11 @@ comments: true
 
   * JMeter首页  
   ![JMeter 首页](Jmeter_index.png)
+
+  * 设置语言为中文简体。
+
+    依次单机工具栏 `Options -> Choose Language -> Chinese(Simplified)` 即可切换。
+
 
 # 下章节内容
   在下一章节，我们将介绍如何使用JMeter进行测试用例的录制(record)。
