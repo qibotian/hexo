@@ -35,6 +35,21 @@ comments: true
 
   ![新建录制脚本测试计划](Create_record_test_sampler.gif)
 
-## 第二步，打开代理
+## 第二步，打开脚本录制器
 
-  
+  * 点击左侧列表最下方的 `HTTP(s) Test Script Recoder`
+  * 在右侧的对话框中，点击绿色的 `启动` 按钮
+  * 在弹出的警告对话框中点击 `确认`
+  * 启动成功
+
+  ![打开脚本录制器](Start_script_recoder.gif)
+
+## 打开浏览器的服务代理功能。
+
+  * 在这里，我用的是 `Chrome` 浏览器，并装了 `SwitchyOmega` 插件。
+
+  ![打开浏览器的服务代理功能](Start_script_recoder.gif)
+
+## 访问百度，随便输入个搜索词搜索，然后打开JMeter查看录制结果。
+
+  ![查看录制结果](Record_result.gif)
