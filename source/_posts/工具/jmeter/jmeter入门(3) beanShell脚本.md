@@ -1,5 +1,5 @@
 ---
-title: jmeter入门(4) beanShell脚本
+title: jmeter入门(3) beanShell脚本
 date: 2019-08-23
 categories: ['工具']
 tags: ['jmeter']
