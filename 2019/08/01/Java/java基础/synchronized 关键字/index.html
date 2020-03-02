@@ -18,19 +18,24 @@
     <link rel="dns-prefetch" href="https://qibotian.github.io">
     <!--SEO-->
 
-    <meta name="keywords" content="资源网站">
+    <meta name="keywords" content="synchronized">
 
 
-    <meta name="description" content="一些资源网站推荐。
+    <meta name="description" content="
 
 
-编程
-Readhub 开发者咨询
-gitee.com 码云开源应用排行
-人人都是产品经理 互联网数据分析能力的养成
+1. synchronized 关键字的作用
+修饰实例方法
 
-工具
-fynas 计算工作日, 金额大小写，手机us...">
+修饰静态方法
+
+修饰代码块
+
+
+2. synchronized 原理
+修饰同步语句块
+
+&nbsp;&nbsp;&nbsp;&...">
 
 
 
@@ -42,7 +47,7 @@ fynas 计算工作日, 金额大小写，手机us...">
     <!--Title-->
 
 
-<title>一些资源网站推荐 | 齐博田的个人博客</title>
+<title>synchronized 关键字 | 齐博田的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="齐博田的个人博客" type="application/atom+xml">
@@ -164,16 +169,16 @@ fynas 计算工作日, 金额大小写，手机us...">
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="一些资源网站推荐">
+        <h1 id="synchronized 关键字">
             
-	            一些资源网站推荐
+	            synchronized 关键字
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/工具/">工具</a>
+            <a class="category-link" href="/categories/JAVA/">JAVA</a>
         </span>
     
 
@@ -182,7 +187,7 @@ fynas 计算工作日, 金额大小写，手机us...">
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/资源网站/">资源网站</a>
+                    <a class="tag-link" href="/tags/synchronized/">synchronized</a>
                 
             </span>
         </span>
@@ -192,7 +197,7 @@ fynas 计算工作日, 金额大小写，手机us...">
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/08/16</span>
+            <span class="date-meta">2019/08/01</span>
         </span>
         
             <span class="fa-wrap">
@@ -207,44 +212,41 @@ fynas 计算工作日, 金额大小写，手机us...">
     </div>
     
     <div class="post-body post-content">
-        <p>一些资源网站推荐。</p>
-<a id="more"></a>
+        <a id="more"></a>
 
-<h1 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h1><ul>
-<li><a href="https://readhub.cn/tech" target="_blank" rel="noopener">Readhub 开发者咨询</a></li>
-<li><a href="https://gitee.com/explore/application-tools" target="_blank" rel="noopener">gitee.com 码云开源应用排行</a></li>
-<li><a href="http://www.woshipm.com/data-analysis/444009.html" target="_blank" rel="noopener">人人都是产品经理 互联网数据分析能力的养成</a></li>
+
+<h1 id="1-synchronized-关键字的作用"><a href="#1-synchronized-关键字的作用" class="headerlink" title="1. synchronized 关键字的作用"></a>1. synchronized 关键字的作用</h1><ul>
+<li><p>修饰实例方法</p>
+</li>
+<li><p>修饰静态方法</p>
+</li>
+<li><p>修饰代码块</p>
+</li>
 </ul>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ul>
-<li><a href="http://www.fynas.com/workday" target="_blank" rel="noopener">fynas 计算工作日, 金额大小写，手机userAgent库，web标准颜色</a></li>
-<li><a href="https://zhaoolee.gitbooks.io/chrome/content/" target="_blank" rel="noopener">chrome 插件英雄榜</a></li>
-<li><a href="http://www.tampermonkey.net/" target="_blank" rel="noopener">Tampermonkey  免费的浏览器扩展和最为流行的用户脚本管理器</a></li>
-<li><a href="http://www.z-sms.com/" target="_blank" rel="noopener">z-sms 在线短信网页版-免费的接码平台</a></li>
-<li><a href="https://search.maven.org/" target="_blank" rel="noopener">snoatype maven 依赖搜索</a></li>
-<li><a href="https://www.remove.bg/" target="_blank" rel="noopener">remove.bg 掉图片背景</a></li>
-<li><a href="https://smallpdf.com/" target="_blank" rel="noopener">smallpdf pdf转各种格式</a></li>
-<li><a href="http://web.airdroid.com/" target="_blank" rel="noopener">airdroid 手机投屏</a></li>
+<h1 id="2-synchronized-原理"><a href="#2-synchronized-原理" class="headerlink" title="2. synchronized 原理"></a>2. synchronized 原理</h1><ul>
+<li>修饰同步语句块</li>
 </ul>
-<h1 id="咨询"><a href="#咨询" class="headerlink" title="咨询"></a>咨询</h1><ul>
-<li><a href="https://www.anyknew.com" target="_blank" rel="noopener">AK AnyKnew 效率咨询,5分钟遍历全网热点</a></li>
-<li><a href="http://www.addog.vip/" target="_blank" rel="noopener">addog 广告人的网址导航 啥都有</a></li>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; synchronized 同步语句块是使用monitorenter和monitorexit指令。 当执行到 monitorenter指令时，线程会尝试获取锁或者monitor(每个对象头都存有monitor对象)。</p>
+<ul>
+<li>修饰方法</li>
 </ul>
-<h1 id="影音"><a href="#影音" class="headerlink" title="影音"></a>影音</h1><ul>
-<li><a href="https://www.ttkmj.net/" target="_blank" rel="noopener">天天美剧</a></li>
-<li><a href="https://www.soniclive.cn/" target="_blank" rel="noopener">体育直播 音速直播</a></li>
-<li><a href="http://moresound.tk/music/" target="_blank" rel="noopener">摩声，听见更多的声音，一个免费下载音乐的网站</a></li>
-<li><a href="http://www.605zy.com/" target="_blank" rel="noopener">605资源采集网，应有尽有</a></li>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; synchronized 修饰的方法会有一个ACC_SYNCHRONIZED标识，该标识会表名这个方式是个同步方法。</p>
+<h1 id="3-JDK1-6-对-synchronized-的优化"><a href="#3-JDK1-6-对-synchronized-的优化" class="headerlink" title="3. JDK1.6 对 synchronized 的优化"></a>3. JDK1.6 对 synchronized 的优化</h1><p>JDK1.6 主要引入了偏向锁，轻量级锁，自旋锁，适应性自旋锁，锁消除，锁粗话等操作来减少锁操作的开销。</p>
+<p>锁主要存在四个状态，依次是 无锁，偏向锁，轻量级锁，重量级锁。他们和随着竞争的升级而逐渐升级，但是不能降级。</p>
+<ul>
+<li><p>偏向锁<br>  线程1访问代码块并获取锁对象时，会在java对象头和栈帧记录中记录偏向的锁的ThreadID, 因为偏向锁不会主动释放，所以当线程1再次获取锁时，需要比较当前线程的ID是否和对象头中的ID一致，如果一致则无需用CAS来获取锁。<br>  如果不一致（说明其他线程占有了偏向锁）则需要查看对象头中记录的线程1是否还存活，如果没有存活，则锁对象将被重置为无锁状态，可以竞争将其设置为偏向锁；如果存活，那么立刻查找该线程的栈帧信息，如果还是需要继续持<br>  有这个对象的锁，那么暂停线程1，撤销偏向锁，升级为轻量锁，如果该线程不再使用锁，那么将锁对象状态设为无所状态，重新设置为偏向锁。</p>
+<p>  偏向锁会偏向第一次获得他的线程，如果在接下来的执行过程中，该锁没有被其他线程获取，那么持有偏向锁的线程就不会同步。如果所竞争比较激烈，那么偏向锁就会失效，升级为轻量级锁。</p>
+</li>
+<li><p>轻量级锁<br>  线程1在获取欧对象锁时，会将java对象头MarkWord复制一份到线程1的帧栈中（1），然后使用CAS把对象头中内容替换为线程1的锁记录的地址（2）。<br>  如果在（1）操作之后（2）操作之前，线程2也打算获取获取锁，在线程2把第（1）步操作做好后，准备CAS将对象头内容替换为自己的锁记录地址，发现线程1已经把对象头换了，那么线程2就尝试使用自旋锁来等待线程1释放锁。</p>
+<p>  轻量级锁主要使用CAS</p>
+</li>
+<li><p>自旋锁<br>  如果持有锁的线程在很短的时间内能够释放资源，那么那些等待锁资源的线程就不需要做内核态和用户态之间切换进入阻塞挂起状态，他只需要等一等（自旋），等待持有锁的线程释放锁后可立即获取锁，这样就避免用户线程和内核切换的消耗。</p>
+</li>
 </ul>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><ul>
-<li><a href="http://www.ypppt.com/" target="_blank" rel="noopener">优品PPT_免费PPT下载</a></li>
-<li><a href="https://tzw520.cn/" target="_blank" rel="noopener">天真网</a></li>
-<li><a href="https://wall.alphacoders.com/" target="_blank" rel="noopener">alphacoders 免费高清壁纸网</a></li>
-<li><a href="https://www.textures.com/" target="_blank" rel="noopener">textures 免费的3D材质下载网站</a></li>
-<li><a href="https://www.ddd.online/template" target="_blank" rel="noopener">动动三维 免费的3D模型下载</a></li>
-<li><a href="https://zixue.3d66.com/" target="_blank" rel="noopener">3D66 免费的3D模型下载</a></li>
-<li><a href="https://free3d.com" target="_blank" rel="noopener">free3d 免费的3D模型下载</a></li>
-<li><a href="https://www.zitijia.com/" target="_blank" rel="noopener">zitijia 正版字体在线授权</a></li>
-<li><a href="https://www.pexels.com/" target="_blank" rel="noopener">pexels 壁纸网</a></li>
+<h1 id="4-synchronized-和-ReentranLock的区别"><a href="#4-synchronized-和-ReentranLock的区别" class="headerlink" title="4. synchronized 和 ReentranLock的区别"></a>4. synchronized 和 ReentranLock的区别</h1><ul>
+<li>两者都属于可重入锁</li>
+<li>synchronized 依赖于JVM实现， ReentranLock依赖于API实现</li>
+<li>相比于 synchronized ,ReentranLock 的可以实现更加高级的功能，比如公平锁，等待可中断，可实现选择性通知（Condition）</li>
 </ul>
 
     </div>
@@ -263,15 +265,15 @@ fynas 计算工作日, 金额大小写，手机us...">
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/08/23/工具/jmeter/jmeter入门(3) beanShell脚本/" class="pre-post btn btn-default" title='jmeter入门(3) beanShell脚本'>
+        <a href="/2019/08/01/Java/Java基础/" class="pre-post btn btn-default" title='Java基础'>
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">jmeter入门(3) beanShell脚本</span>
+            <span class="hidden-xs">Java基础</span>
         </a>
     
     
-        <a href="/2019/08/16/工具/git/git每次push.pull都提示Enter passphrase for key 'sshid_rsa_github'/" class="next-post btn btn-default" title='git每次push.pull都提示Enter passphrase for key 'sshid_rsa_github''>
+        <a href="/2019/07/31/Hexo 文章模板/" class="next-post btn btn-default" title='Hell Hexo'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">git每次push.pull都提示Enter passphrase for key 'sshid_rsa_github'</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">Hell Hexo</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -308,7 +310,7 @@ fynas 计算工作日, 金额大小写，手机us...">
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#编程"><span class="toc-text">编程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#工具"><span class="toc-text">工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#咨询"><span class="toc-text">咨询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#影音"><span class="toc-text">影音</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#资源"><span class="toc-text">资源</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-synchronized-关键字的作用"><span class="toc-text">1. synchronized 关键字的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-synchronized-原理"><span class="toc-text">2. synchronized 原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-JDK1-6-对-synchronized-的优化"><span class="toc-text">3. JDK1.6 对 synchronized 的优化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-synchronized-和-ReentranLock的区别"><span class="toc-text">4. synchronized 和 ReentranLock的区别</span></a></li></ol>
         
     </div>
 </aside>
