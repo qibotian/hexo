@@ -1,5 +1,5 @@
 ---
-title: jmeter入门(4) beanShell脚本
+title: jmeter入门(3) beanShell脚本
 date: 2019-08-23
 categories: ['工具']
 tags: ['jmeter']
@@ -29,13 +29,3 @@ comments: true
   * prev 获取前面的sample返回的信息，常用方法：
     * getResponseDataAsString()：获取响应信息。
     * getResponseCode() ：获取响应code。
-
-# 示例：
-
-  ## 场景
-
-    我们假设一个这样的场景，在发送请求时，我们先对请求体进行加密，请求返回后，我们需要对请求体进行解密。
-
-  ## 具体步骤
-
-    首先我们
