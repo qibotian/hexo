@@ -43,4 +43,4 @@ before_install:
 
 after_success:
 - chmod 600 ~/.ssh/id_rsa
-- ssh travis@59.110.124.76 -o StrictHostKeyChecking=no 'cd ~/hexo_bolg/qibotian.github.io && git pull && hexo g'
+- ssh travis@59.110.124.76 -o StrictHostKeyChecking=no 'cd ~/hexo_bolg/qibotian.github.io && git pull && hexo g && hexo s'
