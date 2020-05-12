@@ -7,41 +7,22 @@ comments: true
 ---
 
 ```
-┌────────────────────────────────────────────────────────────────────┐
-│                        • MobaXterm 11.1 •                          │
-│            (SSH client, X-server and networking tools)             │
-│                                                                    │
-│ ➤ SSH session to root@qbt.91biz.com.cn                             │
-│   • SSH compression : ✔                                            │
-│   • SSH-browser     : ✔                                            │
-│   • X11-forwarding  : ✘  (disabled or not supported by server)     │
-│   • DISPLAY         : 10.2.9.9:0.0                                 │
-│                                                                    │
-│ ➤ For more info, ctrl+click on help or visit our website           │
-└────────────────────────────────────────────────────────────────────┘
 
-Last failed login: Sat May  9 14:36:17 CST 2020 from 176.253.4.88 on ssh:notty
-There were 46 failed login attempts since the last successful login.
-Last login: Sun May  3 12:34:50 2020 from 111.197.22.128
-
-Welcome to Alibaba Cloud Elastic Compute Service !
-
-[root@daluobo ~]#
+# 新增 travis 用户
 [root@daluobo ~]# useradd travis
+
+# 为travis用户设置密码
 [root@daluobo ~]# passwd travis
 Changing password for user travis.
 New password:
 Retype new password:
 passwd: all authentication tokens updated successfully.
-[root@daluobo ~]# vim /etc/sudo
-sudo.conf       sudoers         sudoers.d/      sudo-ldap.conf
-[root@daluobo ~]# vim /etc/sudo
-sudo.conf       sudoers         sudoers.d/      sudo-ldap.conf
+
+# 赋予travis所有权限
 [root@daluobo ~]# vim /etc/sudoers
 [root@daluobo ~]# su travis
-[travis@daluobo root]$ cd ~
-[travis@daluobo ~]$ ssh-ketgen -t rsa
-bash: ssh-ketgen: command not found
+
+# 生成RSA公私密钥对，这里的密码记得设置为空
 [travis@daluobo ~]$ ssh-keygen -t rsa
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/travis/.ssh/id_rsa):
@@ -65,31 +46,24 @@ The key's randomart image is:
 |             +o++|
 +----[SHA256]-----+
 [travis@daluobo ~]$
+
+# 生成完后，在/home/travis就可以看到.ssh目录下的两个密钥文件
+# 修改ssh目录下相关文件下的权限
 [travis@daluobo ~]$ cd /home/travis
-[travis@daluobo ~]$ ls
-[travis@daluobo ~]$ chmod 700 ~/.ssh/*
 [travis@daluobo ~]$ chmod 700 ~/.ssh/
 [travis@daluobo ~]$ chmod 600 ~/.ssh/*
-[travis@daluobo ~]$ ls -la
-total 24
-drwx------  3 travis travis 4096 May  9 17:23 .
-drwxr-xr-x. 4 root   root   4096 May  9 17:19 ..
--rw-r--r--  1 travis travis   18 Aug  8  2019 .bash_logout
--rw-r--r--  1 travis travis  193 Aug  8  2019 .bash_profile
--rw-r--r--  1 travis travis  231 Aug  8  2019 .bashrc
-drwx------  2 travis travis 4096 May  9 17:23 .ssh
 [travis@daluobo ~]$ cd .ssh/
-[travis@daluobo .ssh]$ ls
-id_rsa  id_rsa.pub
 [travis@daluobo .ssh]$ ls -la
 total 16
 drwx------ 2 travis travis 4096 May  9 17:23 .
 drwx------ 3 travis travis 4096 May  9 17:23 ..
 -rw------- 1 travis travis 1679 May  9 17:23 id_rsa
 -rw------- 1 travis travis  396 May  9 17:23 id_rsa.pub
+
+# 将公钥输入到authorized_keys文件中
 [travis@daluobo .ssh]$ cat id_rsa.pub >> authorized_keys
 [travis@daluobo .ssh]$ cat authorized_keys
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDe+CJrrwl9PNgEnbGwNHGq2HiKyIRID3DNRlz++sdZf9mVp2UZMUmTp8TiQwf52fgSywjuYR                                                                                      WoR4iiLFge13TK46iRSCTxPYJ7VfCkGP5GgLUME9WBKldiT6DhtmDni/negskebahpeNJKT4Wgw08BC7MRq/emIcQfJzCoXfw9KPZHXiEKAzrp                                                                                      aue6mjluG7gxG4taDMsxCf5n5FyrWhaEOffr5B/apAR+0WcfU4W2rgB6b231UkLiQS54dgvam4z3kFFpUgy+gGwsyhYgMPwMqAYCPp/DX5xt+1                                                                                      kE/WR0vQ7Yz8cLT8MlP5a/N1n+NJZXWib72m4iq1Ba5KeqZXEB travis@daluobo
+
 [travis@daluobo .ssh]$ vim config
 [travis@daluobo .ssh]$
 [travis@daluobo .ssh]$ curl -sSL https://get.rvm.io | bash -s stable
@@ -509,5 +483,11 @@ ruby-2.6.5 - #extracting ruby-2.6.5 to /usr/local/rvm/src/ruby-2.6.5.....
 ruby-2.6.5 - #configuring......................................................................
 ruby-2.6.5 - #post-configuration..
 ruby-2.6.5 - #compiling..^A.-
+
+# 安装完后，重新看下版本，就可以看到版本已经升级了
+
+[root@daluobo ~]# ruby -v
+ruby 2.6.5p114 (2019-10-01 revision 67812) [x86_64-linux]
+
 
 ```
