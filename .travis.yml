@@ -27,20 +27,15 @@ branches:
 env:
   global:
   - GH_REF: github.com/qibotian/qibotian.github.io.git
-
 addons:
   ssh_known_hosts:
   - 59.110.124.76
-
 before_install:
 - openssl aes-256-cbc -K $encrypted_04674a2f3de9_key -iv $encrypted_04674a2f3de9_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 - echo -e "Host 59.110.124.76\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-
-
-
-
 after_success:
 - chmod 600 ~/.ssh/id_rsa
-- ssh travis@59.110.124.76 -o StrictHostKeyChecking=no 'cd ~/hexo_bolg/qibotian.github.io && git pull && hexo g && hexo s&'
+- ssh travis@59.110.124.76 -o StrictHostKeyChecking=no 'cd ~/hexo_bolg/qibotian.github.io
+  && git pull && hexo g && hexo s&'
