@@ -24,6 +24,12 @@ comments: true
 
 # rabbitMQ 交换机类型
 
+有四种类型
+* Direct
+* Topic
+* Fanout
+* Headers
+
 
 ###
 
