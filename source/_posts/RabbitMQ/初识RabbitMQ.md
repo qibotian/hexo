@@ -26,13 +26,11 @@ comments: true
 
 有四种类型
 * Direct
+这是一个直接队列
 * Topic
+这是一个主题队列
 * Fanout
 * Headers
-
-
-###
-
 
 # 队列构造函数含义
 ```
