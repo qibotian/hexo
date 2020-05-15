@@ -10,7 +10,7 @@ comments: true
 
 * AMQP核心概念
 
-* [初识RabbitMQ](./初识RabbitMQ.html)
+* [初识RabbitMQ](../初识RabbitMQ/初识RabbitMQ.html)
 
 * SpringBoot集成RabbitMQ
 
