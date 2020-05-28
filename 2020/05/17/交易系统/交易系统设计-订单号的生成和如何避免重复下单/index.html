@@ -18,11 +18,15 @@
     <link rel="dns-prefetch" href="https://qibotian.github.io">
     <!--SEO-->
 
-    <meta name="keywords" content="数据分析,Excel">
+    <meta name="keywords" content="订单号生成,重复下单,发号器">
 
 
-    <meta name="description" content="这是一个待完善的文章，敬请期待。
-">
+    <meta name="description" content="订单订单系统作为整个交易系统中的核心，其数据准确性不言而喻。一个常规的订单分为以下几张表
+
+1 订单主表，保存订单的基本信息
+2 商品子表，保存订单商品信息
+3 支付子表，保存订单的支付信息
+4...">
 
 
 
@@ -34,7 +38,7 @@
     <!--Title-->
 
 
-<title>数据分析养成（一） Excel的使用 | 齐博田的个人博客</title>
+<title>交易系统设计-如何避免重复下单 | 齐博田的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="齐博田的个人博客" type="application/atom+xml">
@@ -156,16 +160,16 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="数据分析养成（一） Excel的使用">
+        <h1 id="交易系统设计-如何避免重复下单">
             
-	            数据分析养成（一） Excel的使用
+	            交易系统设计-如何避免重复下单
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/工具/">工具</a>
+            <a class="category-link" href="/categories/交易系统/">交易系统</a>
         </span>
     
 
@@ -174,7 +178,7 @@
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/Excel/">Excel</a> <a class="tag-link" href="/tags/数据分析/">数据分析</a>
+                    <a class="tag-link" href="/tags/发号器/">发号器</a> <a class="tag-link" href="/tags/订单号生成/">订单号生成</a> <a class="tag-link" href="/tags/重复下单/">重复下单</a>
                 
             </span>
         </span>
@@ -184,7 +188,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/08/14</span>
+            <span class="date-meta">2020/05/17</span>
         </span>
         
             <span class="fa-wrap">
@@ -199,7 +203,71 @@
     </div>
     
     <div class="post-body post-content">
-        <p>这是一个待完善的文章，敬请期待。</p>
+        <h1 id="订单"><a href="#订单" class="headerlink" title="订单"></a>订单</h1><p>订单系统作为整个交易系统中的核心，其数据准确性不言而喻。<br>一个常规的订单分为以下几张表</p>
+<ul>
+<li>1 订单主表，保存订单的基本信息</li>
+<li>2 商品子表，保存订单商品信息</li>
+<li>3 支付子表，保存订单的支付信息</li>
+<li>4 优惠子表，保存订单的优惠信息。<br>主表和子表之间是一对多的关系，通过订单号进行关联。</li>
+</ul>
+<h1 id="如何避免重复下单。"><a href="#如何避免重复下单。" class="headerlink" title="如何避免重复下单。"></a>如何避免重复下单。</h1><p>一般的订单处理请求，就是用户提交一个提交订单，发送一个Http请求到服务器，服务器生成一个订单返回给用户。 但是这个过程中，可能会由于用户多次点击提交按钮，或者网络超时重传，而生成多个订单。<br>那么，如何避免重复下单呢？</p>
+<ul>
+<li><p>解决思路。<br>使得生成订单的过程幂等。</p>
+</li>
+<li><p>解决方法。  </p>
+<ul>
+<li>通过主键约束来避免重复提交。<br>服务端提供一个生成订单接口，在提交订单时，把这个订单号一并保存在数据库中，利用数据库的唯一性索引来避免重复提交。</li>
+</ul>
+</li>
+</ul>
+<h1 id="如何生成订单号"><a href="#如何生成订单号" class="headerlink" title="如何生成订单号"></a>如何生成订单号</h1><ul>
+<li>数据库自增主键<ul>
+<li>优势：简单方便</li>
+<li>缺点：性能查，以后分库分表也不好拆分。</li>
+</ul>
+</li>
+<li>UUID<ul>
+<li>优势：具有足够的随机性，能保障唯一</li>
+<li>缺点：<ul>
+<li>没有递增性质。第一，如果需要根据时间查询一列订单并排序，则需要额外时间戳来进行排序，加大了存储成本。 第二，自增的主键在数据表插入的时候，可以减少数据的移动和分页的性能消耗。</li>
+<li>没有具体的业务含义。</li>
+<li>32个16进制组成的字符比较浪费空间</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>雪花算法（Snowflake）<ul>
+<li>原理：<br>将64位的二进制数字分成若干份，每一部分都有特定的业务含义，比如 首位0 （代表正数），时间戳（41位，可供使用69年），机器ID（10位，可以拆分为机房ID和服务器Id），序列号（12位）等等。</li>
+<li>改造<br>可以对机器ID和序列号进行改造，比如分出几位代表业务ID。  </li>
+<li>缺点  <ul>
+<li>依赖系统的时间戳，如果系统时间戳发生了调整（尤其是向前调整），则生成的ID会有概率发生碰撞。</li>
+<li>如果系统的并发量不高，则生成的订单最后一位永远都是1，而如果使用这个键最为分库分表的依据，则可能会造成分库分表不均匀的问题。 解决方案：时间戳不记录毫秒只记录到秒，这样在同一个时间窗口内，可以多生成几个号。 第二，起始序列号随机生成。避免了尾号重复的可能性。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="订单号生成服务器的部署"><a href="#订单号生成服务器的部署" class="headerlink" title="订单号生成服务器的部署"></a>订单号生成服务器的部署</h1><p> 其实说成订单号服务器的生成，不如说成业务ID的生成。因为每个业务的ID都有和订单号一样的需求，通过改造雪花算法，在字段中假如业务字段可进行区分不同的业务。</p>
+<ul>
+<li><p>嵌入到代码中。<br>优势：不需要额外的网络调用即可生成ID<br>缺点：相当于每个服务器上的机器ID都要唯一，也就变相的要求机器码的长度了，另外，为了保证每个服务器的机器码的唯一性，需要zooKeeper进行协调。</p>
+</li>
+<li><p>独立部署为服务器。<br>和嵌入到代码中正好相反。</p>
+</li>
+</ul>
+<ul>
+<li>注意事项<ul>
+<li>订单号最好作为自增的，防止数据库分页太多。</li>
+<li>如果提前生成订单号，则怎么避免客户端伪造订单号？ 通用的做法时，生成订单号后，返回客户端之前，同时将订单号放入Redis缓存中，在接受到生成订单的请求时，先从Redis缓存中查询是否有相应的订单号，如果有，则进行保存订单，如果没有，则返回失败。</li>
+<li>如果同时生成订单号1和订单号2，且号1和号2是有序的，但是提交订单时，号2要比号1提交的早，会导致订单号在系统中的有序性受到干扰，要怎么解决？  这块我还没想到相应的办法。</li>
+</ul>
+</li>
+</ul>
+<h1 id="如何解决ABA问题。"><a href="#如何解决ABA问题。" class="headerlink" title="如何解决ABA问题。"></a>如何解决ABA问题。</h1><ul>
+<li>什么是ABA问题。<br>假如订单中有一个状态是要填写收件人信息，用户发送请求，修改收件人信息为186<strong><strong>1234，然后点击保存，这时用户发现收件人信息填写错误了，就又修改为138</strong></strong>4567。 正常情况下，订单的收件人信息会经过两次变更，第一次变为186<strong><strong>1234， 第二次变成138</strong></strong>4567。但是如果出现网络异常或者其他原因，造成了第一次请求比第二次请求晚到，所以订单第一次变成138<strong><strong>4567，第二次变成168</strong></strong>1234。就造成了ABA问题。</li>
+<li>如何避免ABA问题呢？<br>在订单信息上新增一个版本号字段，在修改订单时，同时返回订单的版本号信息，修改完成后，将修改信息和订单信息同时请求到服务器，服务器在修改订单时，判断订单的版本号是否和请求的版本号一致，如果一致则进行修改，同时修改版本号。不一致则返回失败。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update order set order.recipient = newRecipient, version = version + 1 where order_no = orderNo and version = oldVersion</span><br></pre></td></tr></table></figure>
+
 
     </div>
     
@@ -217,15 +285,15 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/08/16/工具/收藏夹/一些资源网站推荐/" class="pre-post btn btn-default" title='一些资源网站推荐'>
+        <a href="/2020/05/27/Redis/Redis实现分布式锁/" class="pre-post btn btn-default" title='Redis实现分布式锁'>
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">一些资源网站推荐</span>
+            <span class="hidden-xs">Redis实现分布式锁</span>
         </a>
     
     
-        <a href="/2019/08/12/MySQL/mySQL 如何查询死锁/" class="next-post btn btn-default" title='MySQL 如何查询死锁'>
+        <a href="/2020/05/17/交易系统/交易系统相关知识点/" class="next-post btn btn-default" title='交易系统相关问题'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">MySQL 如何查询死锁</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">交易系统相关问题</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -262,7 +330,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <p>暂无目录</p>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#订单"><span class="toc-text">订单</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何避免重复下单。"><span class="toc-text">如何避免重复下单。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何生成订单号"><span class="toc-text">如何生成订单号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#订单号生成服务器的部署"><span class="toc-text">订单号生成服务器的部署</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何解决ABA问题。"><span class="toc-text">如何解决ABA问题。</span></a></li></ol>
         
     </div>
 </aside>
