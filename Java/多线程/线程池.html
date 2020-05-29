@@ -1,0 +1,392 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="齐博田的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://blog.yangrouhubo.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Thread,线程池,多线程">
+
+
+    <meta name="description" content="1. Runnable 和 Callable接口的区别
+Runable 不会返回结果或者抛出异常检查，但是Callable可以
+
+2. 执行execute(Runable) 和  submit(...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>线程池 | 齐博田的个人博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="齐博田的个人博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1277965304 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1277965304%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='齐博田'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 青春须早为，岂能长少年。 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.yangrouhubo.com">齐博田的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/JAVA/"><i class="fa "></i>JAVA</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/MySQL/"><i class="fa "></i>MYSQL</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="线程池">
+            
+	            线程池
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/JAVA/">JAVA</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Thread/">Thread</a> <a class="tag-link" href="/tags/多线程/">多线程</a> <a class="tag-link" href="/tags/线程池/">线程池</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2020/01/03</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="1-Runnable-和-Callable接口的区别"><a href="#1-Runnable-和-Callable接口的区别" class="headerlink" title="1. Runnable 和 Callable接口的区别"></a>1. Runnable 和 Callable接口的区别</h1><ul>
+<li>Runable 不会返回结果或者抛出异常检查，但是Callable可以</li>
+</ul>
+<h1 id="2-执行execute-Runable-和-submit-Callable-区别"><a href="#2-执行execute-Runable-和-submit-Callable-区别" class="headerlink" title="2. 执行execute(Runable) 和  submit(Callable) 区别"></a>2. 执行execute(Runable) 和  submit(Callable) 区别</h1><ul>
+<li>execute用于提交没有返回值的任务，所以调用者没办法知道任务是否执行成功。</li>
+<li>submit用于提交需要有返回值的任务，线程池会返回一个Future对象，通过这个future对象可以判断任务是否执行成功，并且可以通过这个further的get()方法来获取返回值。</li>
+</ul>
+<h1 id="3-如何创建线程池"><a href="#3-如何创建线程池" class="headerlink" title="3. 如何创建线程池"></a>3. 如何创建线程池</h1><ul>
+<li><p>使用 Executors.newFixedThreadPool()等 方法</p>
+<ul>
+<li>FixedThreadPool 和 SingleThreadExecutor: 允许请求队列的长度是Integer.MAX_VALUE,可能堆积大量的请求，从而OOM</li>
+<li>CachedThreadPool 和 ScheduledThreadPool 允许创建的线程数量Integer.MAX_VALUE,可能会创建大量线程，导致OOM</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>使用 new ThreadPoolExecutor() 构造方法<ul>
+<li>推荐使用构造方法</li>
+</ul>
+</li>
+</ul>
+<h1 id="ThreadPoolExecutor构造函数参数分析"><a href="#ThreadPoolExecutor构造函数参数分析" class="headerlink" title="ThreadPoolExecutor构造函数参数分析"></a>ThreadPoolExecutor构造函数参数分析</h1><ul>
+<li>corePoolSize: 核心线程数定义了最小可以同时运行的线程数量</li>
+<li>maximumPoolSize: 当队列中存放的任务达到了队列的容量时，当前可同时运行的线程的数量为最大线程数</li>
+<li>workQueue：当新任务来时会先判断当前运行的线程数量是否达到核心线程数量，如果达到的话，新任务就会被存放在队列中</li>
+<li>keepAliveTime: 当线程池中的数量超过核心线程数量时，如果这时没有新任务提交，核心线程外的线程不会立即销毁，而是等待时间超过了keepAliveTime才会销毁</li>
+<li>unit： keepAliveTime的单位</li>
+<li>threadFactory: executor创建线程时的线程工程</li>
+<li>handler: 饱和策略。</li>
+</ul>
+<h1 id="饱和策略"><a href="#饱和策略" class="headerlink" title="饱和策略"></a>饱和策略</h1><p>如果当线程达到最大线程数量，且任务队列已满的情况下，会有下面几种饱和策略：</p>
+<ul>
+<li>AbortPolicy（默认）: 抛出RejectedExectionException拒绝新任务的处理</li>
+<li>CallerRunsPolicy: 由调用线程自己来执行任务</li>
+<li>DiscardPolicy： 不处理新任务，直接抛弃</li>
+<li>DiscardOldestPolicy: 丢弃最早的未处理的任务</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Qibotian</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/RabbitMQ/初识RabbitMQ.html" class="pre-post btn btn-default" title='初识RabbitMQ'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">初识RabbitMQ</span>
+        </a>
+    
+    
+        <a href="/工具/jmeter/jmeter入门(1) 介绍和安装.html" class="next-post btn btn-default" title='jmeter入门(1) 介绍和安装'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">jmeter入门(1) 介绍和安装</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	<script type="text/javascript" src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: window.location.pathname,
+        owner:"qibotian",
+        repo:"git@github.com:qibotian/gitment.github.io.git",
+        oauth: {
+          client_id:"be0a9c83797d718940a5",
+          client_secret:"a8ffaaf88163d6d82cbb07df6b7e7d8d508b46de"
+        },
+        perPage:"10",
+    });
+    gitment.render('comments');
+</script>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Runnable-和-Callable接口的区别"><span class="toc-text">1. Runnable 和 Callable接口的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-执行execute-Runable-和-submit-Callable-区别"><span class="toc-text">2. 执行execute(Runable) 和  submit(Callable) 区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-如何创建线程池"><span class="toc-text">3. 如何创建线程池</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThreadPoolExecutor构造函数参数分析"><span class="toc-text">ThreadPoolExecutor构造函数参数分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#饱和策略"><span class="toc-text">饱和策略</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        访问量:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        访客数:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//qibotian.github.io/" class="copyright-links" target="_blank" rel="nofollow">Qibotian | </a> <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: false || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

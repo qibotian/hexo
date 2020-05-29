@@ -1,0 +1,405 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="齐博田的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://blog.yangrouhubo.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="synchronized">
+
+
+    <meta name="description" content="
+
+
+1. synchronized 关键字的作用
+修饰实例方法
+
+修饰静态方法
+
+修饰代码块
+
+
+2. synchronized 原理
+修饰同步语句块
+
+&nbsp;&nbsp;&nbsp;&...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>synchronized 关键字 | 齐博田的个人博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="齐博田的个人博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1277965304 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1277965304%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='齐博田'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 青春须早为，岂能长少年。 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.yangrouhubo.com">齐博田的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/JAVA/"><i class="fa "></i>JAVA</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/MySQL/"><i class="fa "></i>MYSQL</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="synchronized 关键字">
+            
+	            synchronized 关键字
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/JAVA/">JAVA</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/synchronized/">synchronized</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/08/01</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <a id="more"></a>
+
+
+<h1 id="1-synchronized-关键字的作用"><a href="#1-synchronized-关键字的作用" class="headerlink" title="1. synchronized 关键字的作用"></a>1. synchronized 关键字的作用</h1><ul>
+<li><p>修饰实例方法</p>
+</li>
+<li><p>修饰静态方法</p>
+</li>
+<li><p>修饰代码块</p>
+</li>
+</ul>
+<h1 id="2-synchronized-原理"><a href="#2-synchronized-原理" class="headerlink" title="2. synchronized 原理"></a>2. synchronized 原理</h1><ul>
+<li>修饰同步语句块</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; synchronized 同步语句块是使用monitorenter和monitorexit指令。 当执行到 monitorenter指令时，线程会尝试获取锁或者monitor(每个对象头都存有monitor对象)。</p>
+<ul>
+<li>修饰方法</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; synchronized 修饰的方法会有一个ACC_SYNCHRONIZED标识，该标识会表名这个方式是个同步方法。</p>
+<h1 id="3-JDK1-6-对-synchronized-的优化"><a href="#3-JDK1-6-对-synchronized-的优化" class="headerlink" title="3. JDK1.6 对 synchronized 的优化"></a>3. JDK1.6 对 synchronized 的优化</h1><p>JDK1.6 主要引入了偏向锁，轻量级锁，自旋锁，适应性自旋锁，锁消除，锁粗话等操作来减少锁操作的开销。</p>
+<p>锁主要存在四个状态，依次是 无锁，偏向锁，轻量级锁，重量级锁。他们和随着竞争的升级而逐渐升级，但是不能降级。</p>
+<ul>
+<li><p>偏向锁  </p>
+<p>  线程1访问代码块并获取锁对象时，会在java对象头和栈帧记录中记录偏向的锁的ThreadID, 因为偏向锁不会主动释放，所以当线程1再次获取锁时，需要比较当前线程的ID是否和对象头中的ID一致，如果一致则无需用CAS来获取锁。<br>  如果不一致（说明其他线程占有了偏向锁）则需要查看对象头中记录的线程1是否还存活，如果没有存活，则锁对象将被重置为无锁状态，可以竞争将其设置为偏向锁；如果存活，那么立刻查找该线程的栈帧信息，如果还是需要继续持<br>  有这个对象的锁，那么暂停线程1，撤销偏向锁，升级为轻量锁，如果该线程不再使用锁，那么将锁对象状态设为无所状态，重新设置为偏向锁。</p>
+<p>  偏向锁会偏向第一次获得他的线程，如果在接下来的执行过程中，该锁没有被其他线程获取，那么持有偏向锁的线程就不会同步。如果所竞争比较激烈，那么偏向锁就会失效，升级为轻量级锁。</p>
+</li>
+<li><p>轻量级锁  </p>
+<p>  线程1在获取欧对象锁时，会将java对象头MarkWord复制一份到线程1的帧栈中（1），然后使用CAS把对象头中内容替换为线程1的锁记录的地址（2）。<br>  如果在（1）操作之后（2）操作之前，线程2也打算获取获取锁，在线程2把第（1）步操作做好后，准备CAS将对象头内容替换为自己的锁记录地址，发现线程1已经把对象头换了，那么线程2就尝试使用自旋锁来等待线程1释放锁。</p>
+<p>  轻量级锁主要使用CAS</p>
+</li>
+<li><p>自旋锁  </p>
+<p>  如果持有锁的线程在很短的时间内能够释放资源，那么那些等待锁资源的线程就不需要做内核态和用户态之间切换进入阻塞挂起状态，他只需要等一等（自旋），等待持有锁的线程释放锁后可立即获取锁，这样就避免用户线程和内核切换的消耗。</p>
+</li>
+</ul>
+<h1 id="4-synchronized-和-ReentranLock的区别"><a href="#4-synchronized-和-ReentranLock的区别" class="headerlink" title="4. synchronized 和 ReentranLock的区别"></a>4. synchronized 和 ReentranLock的区别</h1><ul>
+<li>两者都属于可重入锁</li>
+<li>synchronized 依赖于JVM实现， ReentranLock依赖于API实现</li>
+<li>相比于 synchronized ,ReentranLock 的可以实现更加高级的功能，比如公平锁，等待可中断，可实现选择性通知（Condition）</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Qibotian</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/Java/java基础/fail-fast 和 fail-safe 机制.html" class="pre-post btn btn-default" title='fail-fast 和 fail-safe 机制'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">fail-fast 和 fail-safe 机制</span>
+        </a>
+    
+    
+        <a href="/Java/Java动态代理.html" class="next-post btn btn-default" title='Java动态代理'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Java动态代理</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	<script type="text/javascript" src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: window.location.pathname,
+        owner:"qibotian",
+        repo:"git@github.com:qibotian/gitment.github.io.git",
+        oauth: {
+          client_id:"be0a9c83797d718940a5",
+          client_secret:"a8ffaaf88163d6d82cbb07df6b7e7d8d508b46de"
+        },
+        perPage:"10",
+    });
+    gitment.render('comments');
+</script>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-synchronized-关键字的作用"><span class="toc-text">1. synchronized 关键字的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-synchronized-原理"><span class="toc-text">2. synchronized 原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-JDK1-6-对-synchronized-的优化"><span class="toc-text">3. JDK1.6 对 synchronized 的优化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-synchronized-和-ReentranLock的区别"><span class="toc-text">4. synchronized 和 ReentranLock的区别</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        访问量:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        访客数:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//qibotian.github.io/" class="copyright-links" target="_blank" rel="nofollow">Qibotian | </a> <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: false || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
