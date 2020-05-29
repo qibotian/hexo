@@ -13,9 +13,14 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://qibotian.github.io
+# url: https://qibotian.github.io
+# root: /
+# permalink: :year/:month/:day/:title/
+# permalink_defaults:
+
+url: http://blog.yangrouhubo.com
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :title.html
 permalink_defaults:
 
 # Directory
@@ -88,10 +93,7 @@ sitemap:
 baidusitemap:
   path: baidusitemap.xml
  
-url: http://blog.yangrouhubo.com
-root: /
-permalink: :title.html
-permalink_defaults:
+
  
 jsonContent:
   meta: false
