@@ -81,6 +81,17 @@ deploy:
   type: git
   repo: https://github.com/qibotian/qibotian.github.io.git
   branch: master
+  
+## 自动生成sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+ 
+url: http://blog.yangrouhubo.com
+root: /
+permalink: :title.html
+permalink_defaults:
  
 jsonContent:
   meta: false
