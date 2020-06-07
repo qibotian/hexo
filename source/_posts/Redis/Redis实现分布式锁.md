@@ -6,12 +6,11 @@ tags: [Redis','分布式锁','setNx', 'RedLock']
 comments: true
 ---
 
-* redis 实现分布式锁，主要是通过setNx命令实现的。 实际项目中主要有以下几种实现方式，每种实现方式都有自己的优缺点。
+-   redis 实现分布式锁，主要是通过setNx命令实现的。 实际项目中主要有以下几种实现方式，每种实现方式都有自己的优缺点。
 
 # 1. 通过 RedisTemplate实现
 
-```
-
+```java
   final String lockValue = UUID.randomUUID().toString();
 
 // redisTemplate 第一种实现方式， 缺点是设置值和设置过期时间不在同一事物中，如果设置值成功，但是设置过期方式失败，则可能发生死锁。
@@ -34,12 +33,9 @@ comments: true
   }
 ```
 
-
-
 # 2. 通过 redisson 实现
 
-```
-
+```java
 // 使用redisson实现分布式事务锁， 避免了上述所说的锁超时问题，但是仍会出现以下问题
 // 但是1： 如果主从结构，在master上设置锁成功了，但是尚未同步到slave节点时，master节点挂了，也会出现超卖问题 解决方案：RedLock
 // 但是2：  单线程串行实现会有性能问题  解决方案： 使用分段锁，使不同段位落在不同的redis节点上
@@ -50,13 +46,11 @@ try {
 } finally {
   lock.unlock();
 }
-
 ```
-
 
 # 3. 通过 RedLock 实现。
 
-```
+```java
 // 使用RedLock实现分布式锁
 // Redlock 实现原理是，只有集群中半数以上的节点加锁成功，才算加锁成功。 如果加锁失败，则需要回滚。
 // 缺点1 ： 假如有5个节点ABCDE， 线程1 成功锁定了ABC 三个节点， 但是此时C节点挂了，导致C节点的数据没有来得及刷盘， 如果C节点重启，线程2又锁定了CDE三个节点，就会导致两个线程同时访问同一个共享资源。
@@ -85,5 +79,4 @@ Config config = new Config();
 } finally {
    redLock.unlock();
 }
-
 ```
