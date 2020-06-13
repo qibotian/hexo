@@ -12,7 +12,7 @@ comments: true
 -   官网地址  
     <https://www.elastic.co/cn/>
 
-    ![](/images/markdown-img-paste-20200607173350293.png)
+  ![](http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104622881.png)
 
 -   es可以用来做什么
 -   Logs 快速且可扩展的日志管理
@@ -25,7 +25,7 @@ comments: true
 -   Maps 实时探索位置数据
 -   SIEM 交互式调查和自动威胁检测
 -   Endpoint Security 预防检测猎捕并应对威胁
-    ![](/images/markdown-img-paste-20200607173919658.png)
+    ![](http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104709673.png)
 
 -   下载地址  
 
@@ -53,25 +53,25 @@ comments: true
         <https://github.com/medcl/elasticsearch-analysis-ik/releases>
     -   安装方式
         将下载的文件解压到`es目录\plugins\`下
-        ![](/images/markdown-img-paste-20200607180348421.png)
+        ![](http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104737725.png)
     -   重启es,并查看加载情况
-        ![](/images/markdown-img-paste-20200607180119198.png)
+        ![](http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104748449.png)
     -   分词方式
         -   ik_smart (最少分词)
-            ![](/images/markdown-img-paste-2020060717533981.png)
+            ![](http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104849161.png)
         -   ik_max_word （最细粒度分词）
-            ![](/images/markdown-img-paste-20200607175406231.png)
+            ![](http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104901929.png)
     -   加载自定义分词  
         在`\plugins\ik\config\IKAnalyzer.cfg.xml`中加上自己的分词文件
-        ![](/images/markdown-img-paste-20200607175804592.png)
+        ![](http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104916622.png)
         并在当前目录新增自己的分词文档`qibotian.dic`,注意必须以**UTF-8**的格式保存。
-        ![](/images/markdown-img-paste-2020060718002381.png)
+        ![](http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104925631.png)
         然后并重启es，并检查加载情况
-        ![](/images/markdown-img-paste-20200607180506362.png)
+      ![](http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104934731.png)
         添加前：
-        ![](/images/markdown-img-paste-2020060717574540.png)
+        ![](http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104957755.png)
         添加后：
-        ![](/images/markdown-img-paste-20200608063914534.png)
+        ![](http://qiniu.yangrouhubo.com/markdown-img-paste-20200613105009736.png)
 
 
 -   运行es  
@@ -79,7 +79,7 @@ comments: true
 
 -   访问es  
     在浏览器中访问`127.0.0.1:9200`即可访问
-    ![](/images/markdown-img-paste-20200607172633935.png)
+    ![](http://qiniu.yangrouhubo.com/markdown-img-paste-2020061310502588.png)
 
 
 -   kibana汉化  
