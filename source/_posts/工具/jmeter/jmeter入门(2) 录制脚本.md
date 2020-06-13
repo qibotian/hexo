@@ -1,6 +1,7 @@
 ---
 title: jmeter入门(2) 录制脚本
 date: 2019-08-23
+id: jemterstudy2
 categories: ['工具']
 tags: ['jmeter']
 comments: true

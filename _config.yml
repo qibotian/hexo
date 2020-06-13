@@ -20,7 +20,7 @@ timezone:
 
 url: http://blog.yangrouhubo.com
 root: /
-permalink: :title.html
+permalink: :category/:id/
 permalink_defaults:
 
 # Directory
@@ -61,6 +61,14 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  工具:tool
+  交易系统:transsystem
+  数据分析:dataanalysis
+  ElasticSearch:elasticsearch
+  Java:java
+  MySQL:mysql
+  RabbitMQ:rabbitmq
+  Redis:redis
 tag_map:
 
 # Date / Time format

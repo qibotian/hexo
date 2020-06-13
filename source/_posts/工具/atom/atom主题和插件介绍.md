@@ -1,5 +1,6 @@
 ---
 title: atom主题和插件介绍
+id: atomplugins
 date: 2020-05-27
 categories: ['atom']
 tags: [atom]
@@ -21,4 +22,4 @@ comments: true
 
    打开命令行终端  `Ctrl + `
 
-* 
+*

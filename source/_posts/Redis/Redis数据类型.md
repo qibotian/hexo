@@ -4,6 +4,7 @@ date: 2020-04-28
 categories: ['Redis']
 tags: [Redis','缓存']
 comments: true
+id: redisDataType
 ---
 
 

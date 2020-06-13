@@ -4,6 +4,7 @@ date: 2019-08-01
 categories: ['JAVA']
 tags: ['synchronized']
 comments: true
+id: javasynchronized
 ---
 
 

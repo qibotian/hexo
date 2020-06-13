@@ -4,6 +4,7 @@ date: 2020-05-27
 categories: ['Redis']
 tags: [Redis','分布式锁','setNx', 'RedLock']
 comments: true
+id: useRedisDoDistributeLock
 ---
 
 -   redis 实现分布式锁，主要是通过setNx命令实现的。 实际项目中主要有以下几种实现方式，每种实现方式都有自己的优缺点。

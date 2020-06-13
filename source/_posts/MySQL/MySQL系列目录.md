@@ -4,6 +4,7 @@ date: 2019-05-15
 categories: ['MySQL']
 tags: ['MySQL']
 comments: true
+id: mysqlMenu
 ---
 
 本文是MySQL系列的计划目录，将来有可能补充和修改

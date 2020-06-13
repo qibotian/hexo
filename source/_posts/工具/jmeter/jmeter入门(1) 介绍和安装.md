@@ -1,6 +1,7 @@
 ---
 title: jmeter入门(1) 介绍和安装
 date: 2019-08-23
+id: jemterstudy1
 categories: ['工具']
 tags: ['jmeter']
 comments: true

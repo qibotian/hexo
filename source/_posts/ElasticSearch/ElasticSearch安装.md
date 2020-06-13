@@ -4,6 +4,7 @@ date: 2019-06-07
 categories: ['ElasticSearch']
 tags: ['ElasticSearch']
 comments: true
+id: installes
 ---
 
 -   简介

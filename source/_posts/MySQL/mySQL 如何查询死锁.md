@@ -4,6 +4,7 @@ date: 2019-08-12
 categories: ['MySQL']
 tags: ['MySQL','死锁',]
 comments: true
+id: mysqlDeadLock
 ---
 
 如何查询MYSQL死锁，及排查问题的方法

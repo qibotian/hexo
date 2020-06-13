@@ -4,6 +4,7 @@ date: 2020-03-26
 categories: ['RabbitMQ']
 tags: ['RabbitMQ']
 comments: true
+id: rabbitMQMenu
 ---
 
 <!--more-->

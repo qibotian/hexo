@@ -1,5 +1,6 @@
 ---
 title: git每次push.pull都提示Enter passphrase for key 'sshid_rsa_github'
+id: gitpassphrasesshid_rsa_github
 date: 2019-08-16
 categories: ['工具']
 tags: ['git','passphrase']

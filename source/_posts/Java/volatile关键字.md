@@ -4,6 +4,7 @@ date: 2019-05-17
 categories: ['volatile','JAVA']
 tags: ['Java']
 comments: true
+id: javavolatile
 ---
 
 volatile 关键字的作用和用法

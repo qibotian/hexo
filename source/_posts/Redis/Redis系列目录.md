@@ -4,6 +4,7 @@ date: 2019-05-15
 categories: ['Redis']
 tags: ['Redis']
 comments: true
+id: redisMenu
 ---
 
 本文是Redis系列的计划目录，将来有可能补充和修改

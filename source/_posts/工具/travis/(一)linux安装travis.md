@@ -1,6 +1,7 @@
 ---
 title: (一)linux安装travis
 date: 2019-08-16
+id: installtravis
 categories: ['工具']
 tags: ['travis ci','自动集成','travis', 'gem']
 comments: true
