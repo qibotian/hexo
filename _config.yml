@@ -20,7 +20,7 @@ timezone:
 
 url: http://blog.yangrouhubo.com
 root: /
-permalink: :category/:id/
+permalink: :id/
 permalink_defaults:
 
 # Directory
