@@ -1,0 +1,462 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="齐博田的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://blog.yangrouhubo.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="ElasticSearch">
+
+
+    <meta name="description" content="
+简介Elasticsearch 是一个 基于JSON 、 分布式、RESTful 风格的搜索和数据分析引擎，能够解决不断涌现出的各种用例。
+
+官网地址https://www.elastic.c...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>ElasticSearch安装 | 齐博田的个人博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="齐博田的个人博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1277965304 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1277965304%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='齐博田'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 青春须早为，岂能长少年。 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.yangrouhubo.com">齐博田的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/JAVA/"><i class="fa "></i>JAVA</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/MySQL/"><i class="fa "></i>MYSQL</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="ElasticSearch安装">
+            
+	            ElasticSearch安装
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/ElasticSearch/">ElasticSearch</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/06/07</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <ul>
+<li><p>简介<br>Elasticsearch 是一个 <strong>基于JSON</strong> 、 <strong>分布式</strong>、<strong>RESTful</strong> 风格的搜索和数据分析引擎，能够解决不断涌现出的各种用例。</p>
+</li>
+<li><p>官网地址<br><a href="https://www.elastic.co/cn/" target="_blank" rel="noopener">https://www.elastic.co/cn/</a></p>
+<p><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104622881.png" alt></p>
+</li>
+<li><p>es可以用来做什么</p>
+</li>
+<li><p>Logs 快速且可扩展的日志管理</p>
+</li>
+<li><p>Metrics 对您的系统指标进行检测和可视化</p>
+</li>
+<li><p>APM 获得有关自己应用程序性能的洞见</p>
+</li>
+<li><p>Uptime 检测可用性问题，并进行应对</p>
+</li>
+<li><p>Site Search 卓越的所搜</p>
+</li>
+<li><p>App Search 搜索文档，地理数据等形形色色的内容</p>
+</li>
+<li><p>Workplace Search 集中式搜索，应对企业内的数据孤岛情况</p>
+</li>
+<li><p>Maps 实时探索位置数据</p>
+</li>
+<li><p>SIEM 交互式调查和自动威胁检测</p>
+</li>
+<li><p>Endpoint Security 预防检测猎捕并应对威胁<br><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104709673.png" alt></p>
+</li>
+<li><p>下载地址  </p>
+<ul>
+<li>Es下载地址 <a href="https://mirrors.huaweicloud.com/elasticsearch/7.6.2/" target="_blank" rel="noopener">https://mirrors.huaweicloud.com/elasticsearch/7.6.2/</a></li>
+<li>logstash下载地址 <a href="https://mirrors.huaweicloud.com/logstash/" target="_blank" rel="noopener">https://mirrors.huaweicloud.com/logstash/</a></li>
+<li>kibana 下载地址 <a href="https://mirrors.huaweicloud.com/kibana" target="_blank" rel="noopener">https://mirrors.huaweicloud.com/kibana</a></li>
+</ul>
+<p><strong>需要jdk1.8以上的环境支持，都是免安装的，解压后即可使用</strong></p>
+</li>
+</ul>
+<ul>
+<li><p>elasticsearch 跨越设置<br>  在<code>\config\elasticsearch.yml</code>最下面加入以下设置  </p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">http.cors.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="string">http.cors.allow-origin:</span> <span class="string">"*"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ik 分词器安装</p>
+<ul>
+<li>官网地址 （<a href="https://github.com/medcl/elasticsearch-analysis-ik）" target="_blank" rel="noopener">https://github.com/medcl/elasticsearch-analysis-ik）</a></li>
+<li>说明<br>中文分词器</li>
+<li>下载地址，<strong>选择与es对应的版本</strong><br><a href="https://github.com/medcl/elasticsearch-analysis-ik/releases" target="_blank" rel="noopener">https://github.com/medcl/elasticsearch-analysis-ik/releases</a></li>
+<li>安装方式<br>将下载的文件解压到<code>es目录\plugins\</code>下<br><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104737725.png" alt></li>
+<li>重启es,并查看加载情况<br><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104748449.png" alt></li>
+<li>分词方式<ul>
+<li>ik_smart (最少分词)<br><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104849161.png" alt></li>
+<li>ik_max_word （最细粒度分词）<br><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104901929.png" alt></li>
+</ul>
+</li>
+<li>加载自定义分词<br>在<code>\plugins\ik\config\IKAnalyzer.cfg.xml</code>中加上自己的分词文件<br><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104916622.png" alt><br>并在当前目录新增自己的分词文档<code>qibotian.dic</code>,注意必须以<strong>UTF-8</strong>的格式保存。<br><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104925631.png" alt><br>然后并重启es，并检查加载情况<br><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104934731.png" alt><br>添加前：<br><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-20200613104957755.png" alt><br>添加后：<br><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-20200613105009736.png" alt></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>运行es<br>在<code>bin\elasticsearch.bat</code>即可运行，</p>
+</li>
+<li><p>访问es<br>在浏览器中访问<code>127.0.0.1:9200</code>即可访问<br><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-2020061310502588.png" alt></p>
+</li>
+</ul>
+<ul>
+<li><p>kibana汉化<br>在<code>config\kinaba.yml</code>中添加以下代码</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">i18n.locale:</span> <span class="string">"zh-CN"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动kibana,并测试<br>Kibana 是通向 Elastic 产品集的窗口。 它可以在 Elasticsearch 中对数据进行视觉探索和实时分析。<br>运行<code>bin\kibana.bat</code>, 并访问 <code>localhost:5601</code></p>
+</li>
+</ul>
+<ul>
+<li>es 和 solr 的对比</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>比较模式</th>
+<th>es</th>
+<th>solr</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>安装方式</td>
+<td>开箱即用</td>
+<td>比较复杂</td>
+</tr>
+<tr>
+<td>集群模式</td>
+<td>自带集群</td>
+<td>需要依赖zk</td>
+</tr>
+<tr>
+<td>数据格式</td>
+<td>仅支持JSON</td>
+<td>支持JSON，XML,CSV等文件格式</td>
+</tr>
+<tr>
+<td>功能支持</td>
+<td>仅支持核心功能，其他需要插件支持，比如kibana的图像化界面</td>
+<td>官方支持功能比较多</td>
+</tr>
+<tr>
+<td>查询速度</td>
+<td>即时查询很快，更适合实时查询</td>
+<td>查询快，但是更新索引速度慢</td>
+</tr>
+</tbody></table>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Qibotian</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/HowToUseHexo/" class="pre-post btn btn-default" title='Hell Hexo'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Hell Hexo</span>
+        </a>
+    
+    
+        <a href="/javavolatile/" class="next-post btn btn-default" title='volatile关键字'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">volatile关键字</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	<script type="text/javascript" src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: window.location.pathname,
+        owner:"qibotian",
+        repo:"git@github.com:qibotian/gitment.github.io.git",
+        oauth: {
+          client_id:"be0a9c83797d718940a5",
+          client_secret:"a8ffaaf88163d6d82cbb07df6b7e7d8d508b46de"
+        },
+        perPage:"10",
+    });
+    gitment.render('comments');
+</script>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        访问量:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        访客数:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//qibotian.github.io/" class="copyright-links" target="_blank" rel="nofollow">Qibotian | </a> <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: false || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

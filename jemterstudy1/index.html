@@ -1,0 +1,407 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="齐博田的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://blog.yangrouhubo.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="jmeter">
+
+
+    <meta name="description" content="jemter 官网地址  https://jmeter.apache.org/
+jmeter 介绍  jmeter是一款纯java开发的用于做 功能测试 和性能测试 的开源软件。它最初是为了测试...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>jmeter入门(1) 介绍和安装 | 齐博田的个人博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="齐博田的个人博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1277965304 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1277965304%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='齐博田'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 青春须早为，岂能长少年。 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.yangrouhubo.com">齐博田的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/JAVA/"><i class="fa "></i>JAVA</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/MySQL/"><i class="fa "></i>MYSQL</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="jmeter入门(1) 介绍和安装">
+            
+	            jmeter入门(1) 介绍和安装
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/工具/">工具</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/jmeter/">jmeter</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/08/23</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="jemter-官网地址"><a href="#jemter-官网地址" class="headerlink" title="jemter 官网地址"></a>jemter 官网地址</h1><p>  <a href="https://jmeter.apache.org/" target="_blank" rel="noopener">https://jmeter.apache.org/</a></p>
+<h1 id="jmeter-介绍"><a href="#jmeter-介绍" class="headerlink" title="jmeter 介绍"></a>jmeter 介绍</h1><p>  jmeter是一款纯java开发的用于做 功能测试 和性能测试 的开源软件。它最初是为了测试web应用程序而设计的，后来逐渐扩展到其他应用程序。</p>
+<p>  <img src="/jemterstudy1/what_is_jmeter.png" alt="jmeter入门(一) 介绍和安装"></p>
+<h1 id="jmeter-可以用来做什么"><a href="#jmeter-可以用来做什么" class="headerlink" title="jmeter 可以用来做什么"></a>jmeter 可以用来做什么</h1><p>  Apache JMeter 可以用来测试静态和动态资源以及web应用程序的性能。他可以用来模拟 服务器,服务器组，网络或者对象上的重负载(heavy load) ,以测试其健壮性（strength）或者分析其在不同负载类型（load type）情况下的整体性能(overall performance)。</p>
+<p>  JMeter 有以下几种特性(features):  </p>
+<ul>
+<li>可以用来加载和测试许多种不同的应用程序（application）/服务(server)/协议类型(protocal type)..<ul>
+<li>WEB-HTTP, HTTPS(java, NodeJs, PHP, APS.NET)</li>
+<li>SOAP/REST Webservices</li>
+<li>FTP</li>
+<li>Database via JDBC</li>
+<li>LDAP</li>
+<li>Message-oriented middleware (MOM) via JMS</li>
+<li>Mail - SMTP(S), POP3(S) and IMAP(S)</li>
+<li>Native commands or shell scripts</li>
+<li>TCP</li>
+<li>Java Objects</li>
+</ul>
+</li>
+<li>功能齐全的IDE：允许快速记录（record），构建(build)，和调试(debug)测试计划。</li>
+<li>客户端模式（CLI model）可以从任何java友好操作系统(Java compatible OS)加载测试。</li>
+<li>一个完整的，随时可以呈现的HTML报告(HTML report)</li>
+<li>通过从当前流行的响应格式(HTML, JSON, XML或任何文本格式)中提取数据，可以用来很简单关联测试（Easy Correlation）</li>
+<li>高可移植性(Complete Portability), 纯Java(100% Java purity)</li>
+<li>多线程框架， 允许多线程同时(concurrent)取样，也允许多个线程组同时对不同的功能取样</li>
+<li>可缓存（cache），脱机分析/重放(offline analysis/replaying) 测试结果。</li>
+<li>高可扩展(Hightly Extensible)性:<ul>
+<li>可插拔采样器 (Pluggable Sampler)，允许无限的测试能力</li>
+<li>脚本话采样器 (Scriptabel Sampler)。</li>
+<li>可插拔计时器（Pluggable timer），允许选择多个负载统计数据（Several load statistics）</li>
+<li>数据分析和可视化插件（Visualization plugin）有强大的个性化定制(personalzation)和扩展能力(great extensibility)。</li>
+<li>可以使用函数（Function）进行动态参数化，或者生产参数</li>
+<li>可以使用Maven, Gradle, Jenkins第三方开源库轻松的持续集成(Continuous Integration)。</li>
+</ul>
+</li>
+</ul>
+<h1 id="JMeter-下载及安装"><a href="#JMeter-下载及安装" class="headerlink" title="JMeter 下载及安装"></a>JMeter 下载及安装</h1><p>  可以通过点击 <a href="https://jmeter.apache.org/download_jmeter.cgi" target="_blank" rel="noopener">官网下载页面</a> 直接下载最新的JMeter安装包。  </p>
+<ul>
+<li><p>下载完后，我们将得到的是一个免安装的压缩包，解压这个压缩包</p>
+<p><img src="/jemterstudy1/Jmeter_download.png" alt="JMeter 下载页面"></p>
+</li>
+<li><p>下载完后，我们将得到的是一个免安装的压缩包,我们解压后得到以下文件：<br><img src="/jemterstudy1/Jmeter_file_list.png" alt="JMeter 文件列表"></p>
+</li>
+<li><p>首先我们得确保我们本地的jdk环境在1.8或以上，我们在CMD上运行 <code>java -version</code> 查看jdk版本。<br><img src="/jemterstudy1/Jdk_version.png" alt="查看jdk版本"></p>
+</li>
+<li><p>我们双击JMeter安装目录下 <code>bin\ApacheJMeter.jar</code>,即可运行JMeter。当然在windowns下，我们也可以双击<code>bin\jmeter.bat</code>文件运行JMeter。<br><img src="/jemterstudy1/Bin_apacheJMeter.png" alt="JMeter 运行文件"></p>
+</li>
+<li><p>JMeter首页<br><img src="/jemterstudy1/Jmeter_index.png" alt="JMeter 首页"></p>
+</li>
+<li><p>设置语言为中文简体。</p>
+<p>依次单机工具栏 <code>Options -&gt; Choose Language -&gt; Chinese(Simplified)</code> 即可切换。</p>
+</li>
+</ul>
+<h1 id="下章节内容"><a href="#下章节内容" class="headerlink" title="下章节内容"></a>下章节内容</h1><p>  在下一章节，我们将介绍如何使用JMeter进行测试用例的录制(record)。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Qibotian</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/jemterstudy2/" class="pre-post btn btn-default" title='jmeter入门(2) 录制脚本'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">jmeter入门(2) 录制脚本</span>
+        </a>
+    
+    
+        <a href="/gitpassphrasesshid_rsa_github/" class="next-post btn btn-default" title='git每次push.pull都提示Enter passphrase for key 'sshid_rsa_github''>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">git每次push.pull都提示Enter passphrase for key 'sshid_rsa_github'</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	<script type="text/javascript" src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: window.location.pathname,
+        owner:"qibotian",
+        repo:"git@github.com:qibotian/gitment.github.io.git",
+        oauth: {
+          client_id:"be0a9c83797d718940a5",
+          client_secret:"a8ffaaf88163d6d82cbb07df6b7e7d8d508b46de"
+        },
+        perPage:"10",
+    });
+    gitment.render('comments');
+</script>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jemter-官网地址"><span class="toc-text">jemter 官网地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#jmeter-介绍"><span class="toc-text">jmeter 介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#jmeter-可以用来做什么"><span class="toc-text">jmeter 可以用来做什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JMeter-下载及安装"><span class="toc-text">JMeter 下载及安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下章节内容"><span class="toc-text">下章节内容</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        访问量:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        访客数:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//qibotian.github.io/" class="copyright-links" target="_blank" rel="nofollow">Qibotian | </a> <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: false || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
