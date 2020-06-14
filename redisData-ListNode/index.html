@@ -18,13 +18,13 @@
     <link rel="dns-prefetch" href="http://blog.yangrouhubo.com">
     <!--SEO-->
 
-    <meta name="keywords" content="Thread,线程池,多线程">
+    <meta name="keywords" content="Redis&#39;,List">
 
 
-    <meta name="description" content="1. Runnable 和 Callable接口的区别
-Runable 不会返回结果或者抛出异常检查，但是Callable可以
-
-2. 执行execute(Runable) 和  submit(...">
+    <meta name="description" content="1. Redis中List的用处。
+列表键的底层实现（当列表键的元素比较多时，或者元素都是比较长的字符串时）
+发布与订阅，慢查询，监视器等功能也使用了链表。
+服务器本身使用链表来保存客户端信息，...">
 
 
 
@@ -36,7 +36,7 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
     <!--Title-->
 
 
-<title>线程池 | 齐博田的个人博客</title>
+<title>Redis数据结构-List | 齐博田的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="齐博田的个人博客" type="application/atom+xml">
@@ -158,16 +158,16 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="线程池">
+        <h1 id="Redis数据结构-List">
             
-	            线程池
+	            Redis数据结构-List
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/JAVA/">JAVA</a>
+            <a class="category-link" href="/categories/Redis/">Redis</a>
         </span>
     
 
@@ -176,7 +176,7 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/Thread/">Thread</a> <a class="tag-link" href="/tags/多线程/">多线程</a> <a class="tag-link" href="/tags/线程池/">线程池</a>
+                    <a class="tag-link" href="/tags/List/">List</a> <a class="tag-link" href="/tags/Redis/">Redis'</a>
                 
             </span>
         </span>
@@ -186,7 +186,7 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2020/01/03</span>
+            <span class="date-meta">2020/05/27</span>
         </span>
         
             <span class="fa-wrap">
@@ -201,43 +201,23 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
     </div>
     
     <div class="post-body post-content">
-        <h1 id="1-Runnable-和-Callable接口的区别"><a href="#1-Runnable-和-Callable接口的区别" class="headerlink" title="1. Runnable 和 Callable接口的区别"></a>1. Runnable 和 Callable接口的区别</h1><ul>
-<li>Runable 不会返回结果或者抛出异常检查，但是Callable可以</li>
+        <h1 id="1-Redis中List的用处。"><a href="#1-Redis中List的用处。" class="headerlink" title="1. Redis中List的用处。"></a>1. Redis中List的用处。</h1><ol>
+<li>列表键的底层实现（当列表键的元素比较多时，或者元素都是比较长的字符串时）</li>
+<li>发布与订阅，慢查询，监视器等功能也使用了链表。</li>
+<li>服务器本身使用链表来保存客户端信息，客户端的输出缓冲区等。</li>
+</ol>
+<h1 id="2-节点和列表数据结构定义"><a href="#2-节点和列表数据结构定义" class="headerlink" title="2. 节点和列表数据结构定义"></a>2. 节点和列表数据结构定义</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 节点的定义</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> &#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 前置节点</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">prev</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 后置节点</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">next</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//节点的值</span></span><br><span class="line">  <span class="keyword">void</span> *value;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 列表的定义</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> &#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 头结点</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">head</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 尾节点</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">tail</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//节点的值</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> len;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//节点复制函数</span></span><br><span class="line">  <span class="keyword">void</span> *(*(dup)) (<span class="keyword">void</span> *ptr);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//节点释放函数</span></span><br><span class="line">  <span class="keyword">void</span> *(*(<span class="built_in">free</span>)) (<span class="keyword">void</span> *ptr);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//节点对比函数</span></span><br><span class="line">  <span class="keyword">void</span> *(*(match)) (<span class="keyword">void</span> *ptr, <span class="keyword">void</span> *key);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-List的特性"><a href="#3-List的特性" class="headerlink" title="3. List的特性"></a>3. List的特性</h1><ul>
+<li>双端链表：每个节点都有prev 和 next节点，获取某个节点的前置节点和后置节点的复杂度都是O(1)；</li>
+<li>无环： 表头节点的prev 和 表尾节点都指向NULL，对链表的访问以NULL为终点。</li>
+<li>带表头节点和表尾节点： 获取表头或者表尾的复杂度都是O(1)</li>
+<li>带链表长度： 获取长度复杂度为O(1)</li>
+<li>多态：链表节点使用void*指针来保存节点的值，可以用来保存不同类型的值。</li>
 </ul>
-<h1 id="2-执行execute-Runable-和-submit-Callable-区别"><a href="#2-执行execute-Runable-和-submit-Callable-区别" class="headerlink" title="2. 执行execute(Runable) 和  submit(Callable) 区别"></a>2. 执行execute(Runable) 和  submit(Callable) 区别</h1><ul>
-<li>execute用于提交没有返回值的任务，所以调用者没办法知道任务是否执行成功。</li>
-<li>submit用于提交需要有返回值的任务，线程池会返回一个Future对象，通过这个future对象可以判断任务是否执行成功，并且可以通过这个further的get()方法来获取返回值。</li>
-</ul>
-<h1 id="3-如何创建线程池"><a href="#3-如何创建线程池" class="headerlink" title="3. 如何创建线程池"></a>3. 如何创建线程池</h1><ul>
-<li><p>使用 Executors.newFixedThreadPool()等 方法</p>
-<ul>
-<li>FixedThreadPool 和 SingleThreadExecutor: 允许请求队列的长度是Integer.MAX_VALUE,可能堆积大量的请求，从而OOM</li>
-<li>CachedThreadPool 和 ScheduledThreadPool 允许创建的线程数量Integer.MAX_VALUE,可能会创建大量线程，导致OOM</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>使用 new ThreadPoolExecutor() 构造方法<ul>
-<li>推荐使用构造方法</li>
-</ul>
-</li>
-</ul>
-<h1 id="ThreadPoolExecutor构造函数参数分析"><a href="#ThreadPoolExecutor构造函数参数分析" class="headerlink" title="ThreadPoolExecutor构造函数参数分析"></a>ThreadPoolExecutor构造函数参数分析</h1><ul>
-<li>corePoolSize: 核心线程数定义了最小可以同时运行的线程数量</li>
-<li>maximumPoolSize: 当队列中存放的任务达到了队列的容量时，当前可同时运行的线程的数量为最大线程数</li>
-<li>workQueue：当新任务来时会先判断当前运行的线程数量是否达到核心线程数量，如果达到的话，新任务就会被存放在队列中</li>
-<li>keepAliveTime: 当线程池中的数量超过核心线程数量时，如果这时没有新任务提交，核心线程外的线程不会立即销毁，而是等待时间超过了keepAliveTime才会销毁</li>
-<li>unit： keepAliveTime的单位</li>
-<li>threadFactory: executor创建线程时的线程工程</li>
-<li>handler: 饱和策略。</li>
-</ul>
-<h1 id="饱和策略"><a href="#饱和策略" class="headerlink" title="饱和策略"></a>饱和策略</h1><p>如果当线程达到最大线程数量，且任务队列已满的情况下，会有下面几种饱和策略：</p>
-<ul>
-<li>AbortPolicy（默认）: 抛出RejectedExectionException拒绝新任务的处理</li>
-<li>CallerRunsPolicy: 由调用线程自己来执行任务</li>
-<li>DiscardPolicy： 不处理新任务，直接抛弃</li>
-<li>DiscardOldestPolicy: 丢弃最早的未处理的任务</li>
-</ul>
+<h1 id="4-示例"><a href="#4-示例" class="headerlink" title="4. 示例"></a>4. 示例</h1><p><img src="http://qiniu.yangrouhubo.com/markdown-img-paste-20200614193540272.png" alt></p>
 
     </div>
     
@@ -255,15 +235,15 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/whatIsRabbitMQ/" class="pre-post btn btn-default" title='初识RabbitMQ'>
+        <a href="/redisData-SDS/" class="pre-post btn btn-default" title='Redis数据结构-SDS'>
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">初识RabbitMQ</span>
+            <span class="hidden-xs">Redis数据结构-SDS</span>
         </a>
     
     
-        <a href="/jemterstudy1/" class="next-post btn btn-default" title='jmeter入门(1) 介绍和安装'>
+        <a href="/atomplugins/" class="next-post btn btn-default" title='atom主题和插件介绍'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">jmeter入门(1) 介绍和安装</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">atom主题和插件介绍</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -300,7 +280,7 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Runnable-和-Callable接口的区别"><span class="toc-text">1. Runnable 和 Callable接口的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-执行execute-Runable-和-submit-Callable-区别"><span class="toc-text">2. 执行execute(Runable) 和  submit(Callable) 区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-如何创建线程池"><span class="toc-text">3. 如何创建线程池</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThreadPoolExecutor构造函数参数分析"><span class="toc-text">ThreadPoolExecutor构造函数参数分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#饱和策略"><span class="toc-text">饱和策略</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Redis中List的用处。"><span class="toc-text">1. Redis中List的用处。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-节点和列表数据结构定义"><span class="toc-text">2. 节点和列表数据结构定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-List的特性"><span class="toc-text">3. List的特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-示例"><span class="toc-text">4. 示例</span></a></li></ol>
         
     </div>
 </aside>

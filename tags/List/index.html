@@ -33,7 +33,7 @@
     <!--Title-->
 
 
-<title>分类: 交易系统 | 齐博田的个人博客</title>
+<title>标签: List | 齐博田的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="齐博田的个人博客" type="application/atom+xml">
@@ -154,8 +154,9 @@
     
     
         <li>
-            交易系统
+            List
         </li>
+    
     
 
 </ol>
@@ -166,29 +167,27 @@
         <div class="post-content">
             <div class="post-head home-post-head">
                 <h1 class="post-title">
-                    <a href="/howtocreateorderno/">交易系统设计-订单号的生成和如何避免重复下单</a>
+                    <a href="/redisData-ListNode/">Redis数据结构-List</a>
                 </h1>
                 <div class="post-meta">  &bull;
                     <time class="post-date" datetime="" title="">
-                        2020年05月17日
+                        2020年05月27日
                     </time>
                 </div>
             </div>
             <p class="brief">
                 
-                    订单订单系统作为整个交易系统中的核心，其数据准确性不言而喻。一个常规的订单分为以下几张表
+                    1. Redis中List的用处。
+列表键的底层实现（当列表键的元素比较多时，或者元素都是比较长的字符串时）
+发布与订阅，慢查询，监视器等功能也使用了链表。
+服务器本身使用链表来保存客户端信息，客户端的输出缓冲区等。
 
-1 订单主表，保存订单的基本信息
-2 商品子表，保存订单商品信息
-3 支付子表，保存订单的支付信息
-4 优惠子表，保存订单的优惠信息。主表和子...
+2. 节点和列...
                 
             </p>
         </div>
     </article>
  
-
-
 
 
 
