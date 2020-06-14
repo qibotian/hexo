@@ -16,10 +16,10 @@ id: redisData-SDS
     1. 数据库中，包含字符串的键值对在底层都是由SDS实现的。
     2. SDS可以被用作缓冲区： AOF缓存区，客户端状态中的输入缓冲区。
 
-# 2. SDS 数据结构。
+# 2. SDS 数据结构定义。
 
 ```C
-  struct sdsstr {
+  typedef struct sdsstr {
 
     // 记录buf中已使用字节的数量
     // 等于SDS所保存字符串的长度
