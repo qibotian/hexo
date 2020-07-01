@@ -18,13 +18,23 @@
     <link rel="dns-prefetch" href="http://blog.yangrouhubo.com">
     <!--SEO-->
 
-    <meta name="keywords" content="Thread,线程池,多线程">
+    <meta name="keywords" content="秒杀系统">
 
 
-    <meta name="description" content="1. Runnable 和 Callable接口的区别
-Runable 不会返回结果或者抛出异常检查，但是Callable可以
+    <meta name="description" content="1. 秒杀系统的关键问题1.1 高并发问题
+限流
+前端限流
+禁止用户重复点击
 
-2. 执行execute(Runable) 和  submit(...">
+
+服务器限流
+
+
+
+1.2 超卖问题1.3 恶意请求问题1.4 链接暴露问题
+使用秒杀URL加盐解决
+
+1.5 数...">
 
 
 
@@ -36,7 +46,7 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
     <!--Title-->
 
 
-<title>线程池 | 齐博田的个人博客</title>
+<title>秒杀系统设计 | 齐博田的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="齐博田的个人博客" type="application/atom+xml">
@@ -158,16 +168,16 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="线程池">
+        <h1 id="秒杀系统设计">
             
-	            线程池
+	            秒杀系统设计
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/JAVA/">JAVA</a>
+            <a class="category-link" href="/categories/交易系统/">交易系统</a>
         </span>
     
 
@@ -176,7 +186,7 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/Thread/">Thread</a> <a class="tag-link" href="/tags/多线程/">多线程</a> <a class="tag-link" href="/tags/线程池/">线程池</a>
+                    <a class="tag-link" href="/tags/秒杀系统/">秒杀系统</a>
                 
             </span>
         </span>
@@ -186,7 +196,7 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2020/01/03</span>
+            <span class="date-meta">2020/06/15</span>
         </span>
         
             <span class="fa-wrap">
@@ -201,44 +211,20 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
     </div>
     
     <div class="post-body post-content">
-        <h1 id="1-Runnable-和-Callable接口的区别"><a href="#1-Runnable-和-Callable接口的区别" class="headerlink" title="1. Runnable 和 Callable接口的区别"></a>1. Runnable 和 Callable接口的区别</h1><ul>
-<li>Runable 不会返回结果或者抛出异常检查，但是Callable可以</li>
+        <h1 id="1-秒杀系统的关键问题"><a href="#1-秒杀系统的关键问题" class="headerlink" title="1. 秒杀系统的关键问题"></a>1. 秒杀系统的关键问题</h1><h2 id="1-1-高并发问题"><a href="#1-1-高并发问题" class="headerlink" title="1.1 高并发问题"></a>1.1 高并发问题</h2><ul>
+<li>限流<ul>
+<li>前端限流<ul>
+<li>禁止用户重复点击</li>
 </ul>
-<h1 id="2-执行execute-Runable-和-submit-Callable-区别"><a href="#2-执行execute-Runable-和-submit-Callable-区别" class="headerlink" title="2. 执行execute(Runable) 和  submit(Callable) 区别"></a>2. 执行execute(Runable) 和  submit(Callable) 区别</h1><ul>
-<li>execute用于提交没有返回值的任务，所以调用者没办法知道任务是否执行成功。</li>
-<li>submit用于提交需要有返回值的任务，线程池会返回一个Future对象，通过这个future对象可以判断任务是否执行成功，并且可以通过这个further的get()方法来获取返回值。</li>
-</ul>
-<h1 id="3-如何创建线程池"><a href="#3-如何创建线程池" class="headerlink" title="3. 如何创建线程池"></a>3. 如何创建线程池</h1><ul>
-<li><p>使用 Executors.newFixedThreadPool()等 方法</p>
-<ul>
-<li>FixedThreadPool 和 SingleThreadExecutor: 允许请求队列的长度是Integer.MAX_VALUE,可能堆积大量的请求，从而OOM</li>
-<li>CachedThreadPool 和 ScheduledThreadPool 允许创建的线程数量Integer.MAX_VALUE,可能会创建大量线程，导致OOM</li>
+</li>
+<li>服务器限流</li>
 </ul>
 </li>
 </ul>
-<ul>
-<li>使用 new ThreadPoolExecutor() 构造方法<ul>
-<li>推荐使用构造方法</li>
+<h2 id="1-2-超卖问题"><a href="#1-2-超卖问题" class="headerlink" title="1.2 超卖问题"></a>1.2 超卖问题</h2><h2 id="1-3-恶意请求问题"><a href="#1-3-恶意请求问题" class="headerlink" title="1.3 恶意请求问题"></a>1.3 恶意请求问题</h2><h2 id="1-4-链接暴露问题"><a href="#1-4-链接暴露问题" class="headerlink" title="1.4 链接暴露问题"></a>1.4 链接暴露问题</h2><ul>
+<li>使用秒杀URL加盐解决</li>
 </ul>
-</li>
-</ul>
-<h1 id="ThreadPoolExecutor构造函数参数分析"><a href="#ThreadPoolExecutor构造函数参数分析" class="headerlink" title="ThreadPoolExecutor构造函数参数分析"></a>ThreadPoolExecutor构造函数参数分析</h1><ul>
-<li>corePoolSize: 核心线程数定义了最小可以同时运行的线程数量</li>
-<li>maximumPoolSize: 当队列中存放的任务达到了队列的容量时，当前可同时运行的线程的数量为最大线程数</li>
-<li>workQueue：当新任务来时会先判断当前运行的线程数量是否达到核心线程数量，如果达到的话，新任务就会被存放在队列中</li>
-<li>keepAliveTime: 当线程池中的数量超过核心线程数量时，如果这时没有新任务提交，核心线程外的线程不会立即销毁，而是等待时间超过了keepAliveTime才会销毁</li>
-<li>unit： keepAliveTime的单位</li>
-<li>threadFactory: executor创建线程时的线程工程</li>
-<li>handler: 饱和策略。</li>
-</ul>
-<h1 id="饱和策略"><a href="#饱和策略" class="headerlink" title="饱和策略"></a>饱和策略</h1><p>如果当线程达到最大线程数量，且任务队列已满的情况下，会有下面几种饱和策略：</p>
-<ul>
-<li>AbortPolicy（默认）: 抛出RejectedExectionException拒绝新任务的处理</li>
-<li>CallerRunsPolicy: 由调用线程自己来执行任务</li>
-<li>DiscardPolicy： 不处理新任务，直接抛弃</li>
-<li>DiscardOldestPolicy: 丢弃最早的未处理的任务</li>
-</ul>
-
+<h2 id="1-5-数据库压力"><a href="#1-5-数据库压力" class="headerlink" title="1.5 数据库压力"></a>1.5 数据库压力</h2>
     </div>
     
     <div class="post-footer">
@@ -255,15 +241,10 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/rabbitMQMenu/" class="pre-post btn btn-default" title='RabbitMQ系列目录'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">RabbitMQ系列目录</span>
-        </a>
     
-    
-        <a href="/jemterstudy3/" class="next-post btn btn-default" title='jmeter入门(3) beanShell脚本'>
+        <a href="/redisData-SDS/" class="next-post btn btn-default" title='Redis数据结构-SDS'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">jmeter入门(3) beanShell脚本</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">Redis数据结构-SDS</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -300,7 +281,7 @@ Runable 不会返回结果或者抛出异常检查，但是Callable可以
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Runnable-和-Callable接口的区别"><span class="toc-text">1. Runnable 和 Callable接口的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-执行execute-Runable-和-submit-Callable-区别"><span class="toc-text">2. 执行execute(Runable) 和  submit(Callable) 区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-如何创建线程池"><span class="toc-text">3. 如何创建线程池</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThreadPoolExecutor构造函数参数分析"><span class="toc-text">ThreadPoolExecutor构造函数参数分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#饱和策略"><span class="toc-text">饱和策略</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-秒杀系统的关键问题"><span class="toc-text">1. 秒杀系统的关键问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-高并发问题"><span class="toc-text">1.1 高并发问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-超卖问题"><span class="toc-text">1.2 超卖问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-恶意请求问题"><span class="toc-text">1.3 恶意请求问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-链接暴露问题"><span class="toc-text">1.4 链接暴露问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-数据库压力"><span class="toc-text">1.5 数据库压力</span></a></li></ol></li></ol>
         
     </div>
 </aside>
