@@ -1,8 +1,8 @@
 ---
 title: Redis数据结构-List
-date: 2020-05-27
+date: 2020-06-14
 categories: ['Redis']
-tags: [Redis','List']
+tags: ['Redis','List']
 comments: true
 id: redisData-ListNode
 ---
