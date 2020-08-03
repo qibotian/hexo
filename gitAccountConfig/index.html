@@ -18,13 +18,12 @@
     <link rel="dns-prefetch" href="http://blog.yangrouhubo.com">
     <!--SEO-->
 
-    <meta name="keywords" content="jmeter">
+    <meta name="keywords" content="git">
 
 
-    <meta name="description" content="前言Bean Shell 内置遍历大全
-log  打印日志，写入信息到jmeber.log文件。
-SampleResult 获取SampleResult对象，能通过这个对象获取想要的信息。
-Re...">
+    <meta name="description" content="[TOC]
+###1. 首先生成公私钥对
+1234567891011121314151617181920212223$ ssh-keygen -t rsa -C " 自己的邮箱"generatin...">
 
 
 
@@ -36,7 +35,7 @@ Re...">
     <!--Title-->
 
 
-<title>jmeter入门(3) beanShell脚本 | 齐博田的个人博客</title>
+<title>git多账户配置 | 齐博田的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="齐博田的个人博客" type="application/atom+xml">
@@ -158,9 +157,9 @@ Re...">
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="jmeter入门(3) beanShell脚本">
+        <h1 id="git多账户配置">
             
-	            jmeter入门(3) beanShell脚本
+	            git多账户配置
             
         </h1>
         <div class="post-meta">
@@ -176,7 +175,7 @@ Re...">
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/jmeter/">jmeter</a>
+                    <a class="tag-link" href="/tags/git/">git</a>
                 
             </span>
         </span>
@@ -186,7 +185,7 @@ Re...">
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/08/23</span>
+            <span class="date-meta">2020/08/03</span>
         </span>
         
             <span class="fa-wrap">
@@ -201,31 +200,18 @@ Re...">
     </div>
     
     <div class="post-body post-content">
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h1 id="Bean-Shell-内置遍历大全"><a href="#Bean-Shell-内置遍历大全" class="headerlink" title="Bean Shell 内置遍历大全"></a>Bean Shell 内置遍历大全</h1><ul>
-<li>log  打印日志，写入信息到jmeber.log文件。</li>
-<li>SampleResult 获取SampleResult对象，能通过这个对象获取想要的信息。</li>
-<li>Response 获取Response对象，能通过这个对象获取响应信息。</li>
-<li>Failure 查看接口调使用能否成功，假如返回false是成功的，true是失败的。</li>
-<li>FailureMessage 失败信息，没有设置的时候失败信息是空的，能set这个信息。</li>
-<li>ResponseData 获取response body类型是byte[]。</li>
-<li>ResponseCode 返回接口code成功是200。</li>
-<li>ResponseMessage 获取msg成功是OK。</li>
-<li>ResponseHeaders 获取接口服务端返回的头部信息。</li>
-<li>RequestHeaders 获取用户端请求的头部信息。</li>
-<li>SampleLabel 获取接口请求的名称。</li>
-<li>SamplerData 获取请求的url和body。</li>
-<li>ctx 代表上下文信息，能直接用。</li>
-<li>vars即JMeterVariables，操作jmeter变量，这个变量实际引用了JMeter线程中的局部变量容器（本质上是Map），常用方法：<ul>
-<li>vars.get(String key)：从jmeter中获得变量值；</li>
-<li>vars.put(String key，String value)：数据存到jmeter变量中；</li>
-</ul>
-</li>
-<li>prev 获取前面的sample返回的信息，常用方法：<ul>
-<li>getResponseDataAsString()：获取响应信息。</li>
-<li>getResponseCode() ：获取响应code。</li>
-</ul>
-</li>
-</ul>
+        <p>[TOC]</p>
+<p>###1. 首先生成公私钥对</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"自己的邮箱"</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line"><span class="comment"># 这里会让你输入生成的rsa文件名称,这里假如我们输入id_company</span></span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/c/Users/xxx/.ssh/id_rsa):</span><br><span class="line"><span class="comment"># 这里会提示你输入密码和确认密码，这里直接回车就可以</span></span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> id_company.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> id_company.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:zUFNJve8UOkK2jIfxxxxxxxxxxxxxxxxhgVxg+lmny6Aw xxxxx.com.cn</span><br><span class="line">The key\<span class="string">'s randomart image is:</span></span><br><span class="line"><span class="string">+---[RSA 2048]----+</span></span><br><span class="line"><span class="string">|  o.+*.   oo+ .. |</span></span><br><span class="line"><span class="string">| . ooo.  . +.+.  |</span></span><br><span class="line"><span class="string">|  . B  .  . ..o  |</span></span><br><span class="line"><span class="string">|   * .. .o.. ... |</span></span><br><span class="line"><span class="string">|E . .. oSoo. ..  |</span></span><br><span class="line"><span class="string">| +    + = o .    |</span></span><br><span class="line"><span class="string">|  o  . = + o     |</span></span><br><span class="line"><span class="string">|      +.B o      |</span></span><br><span class="line"><span class="string">|     ..=o=       |</span></span><br><span class="line"><span class="string">+----[SHA256]-----+</span></span><br></pre></td></tr></table></figure>
+
+<p>###2. 重复上面步骤，将rsa文件名设置为另一个名字，比如id_home</p>
+<p>###3. 在.ssh目录下新建一个config文件，内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#公司的git</span><br><span class="line">HOST git@自己公司的git地址</span><br><span class="line">  User 用户名</span><br><span class="line">  Hostname git@自己公司的git地址</span><br><span class="line">  IdentityFile ~/.ssh/id_company</span><br><span class="line">  #Port *** 公司的GIT端口</span><br><span class="line"></span><br><span class="line"># 自己的地址</span><br><span class="line">HOST git@自己的git地址</span><br><span class="line">  User 用户名</span><br><span class="line">  Hostname git@自己的git地址</span><br><span class="line">  IdentityFile ~/.ssh/id_home</span><br><span class="line">  #Port *** 自己的git端口</span><br></pre></td></tr></table></figure>
+
+<p>###4. 然后我们运行以下命令，将我们的账号假如know_hosts文件中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent bash</span><br><span class="line">$ ssh-add ~/.ssh/id_company</span><br><span class="line">$ ssh-add ~/.ssh/id_home</span><br></pre></td></tr></table></figure>
+
+<p>###5. 在响应的git库中将自己的公钥维护上去</p>
 
     </div>
     
@@ -243,15 +229,15 @@ Re...">
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/jemterstudy2/" class="pre-post btn btn-default" title='jmeter入门(2) 录制脚本'>
+        <a href="/ckdeijsmt000hf7w7u2y8o1er/" class="pre-post btn btn-default" title=''>
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">jmeter入门(2) 录制脚本</span>
+            <span class="hidden-xs"></span>
         </a>
     
     
-        <a href="/goodWebSource/" class="next-post btn btn-default" title='一些资源网站推荐'>
+        <a href="/install_gitlab/" class="next-post btn btn-default" title='linux下gitlab安装及汉化'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">一些资源网站推荐</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">linux下gitlab安装及汉化</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -288,7 +274,7 @@ Re...">
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bean-Shell-内置遍历大全"><span class="toc-text">Bean Shell 内置遍历大全</span></a></li></ol>
+            <p>暂无目录</p>
         
     </div>
 </aside>
