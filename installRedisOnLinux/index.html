@@ -18,23 +18,16 @@
     <link rel="dns-prefetch" href="http://blog.yangrouhubo.com">
     <!--SEO-->
 
-    <meta name="keywords" content="RabbitMQ">
+    <meta name="keywords" content="Redis">
 
 
-    <meta name="description" content="
+    <meta name="description" content="linux中安装Redis
 
 
-AMQP核心概念
 
-初识RabbitMQ
-
-SpringBoot集成RabbitMQ
-
-RabbitMQ如何保障消息不丢失的
-
-RabbitMQ如何保障消息顺序调用
-
-RabbitMQ如何...">
+[TOC]
+###1 首先查看自己的gcc版本
+123456789101112131415161718gcc --version#如果输出的7版本以下的话，则编...">
 
 
 
@@ -46,7 +39,7 @@ RabbitMQ如何...">
     <!--Title-->
 
 
-<title>RabbitMQ系列目录 | 齐博田的个人博客</title>
+<title>linux安装Redis | 齐博田的个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="齐博田的个人博客" type="application/atom+xml">
@@ -168,16 +161,16 @@ RabbitMQ如何...">
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="RabbitMQ系列目录">
+        <h1 id="linux安装Redis">
             
-	            RabbitMQ系列目录
+	            linux安装Redis
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
+            <a class="category-link" href="/categories/Redis/">Redis</a>
         </span>
     
 
@@ -186,7 +179,7 @@ RabbitMQ如何...">
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/RabbitMQ/">RabbitMQ</a>
+                    <a class="tag-link" href="/tags/Redis/">Redis</a>
                 
             </span>
         </span>
@@ -196,7 +189,7 @@ RabbitMQ如何...">
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2020/03/26</span>
+            <span class="date-meta">2020/08/03</span>
         </span>
         
             <span class="fa-wrap">
@@ -211,28 +204,20 @@ RabbitMQ如何...">
     </div>
     
     <div class="post-body post-content">
-        <a id="more"></a>
+        <p>linux中安装Redis</p>
+<a id="more"></a>
 
-<ul>
-<li><p>AMQP核心概念</p>
-</li>
-<li><p><a href="../初识RabbitMQ/初识RabbitMQ.html">初识RabbitMQ</a></p>
-</li>
-<li><p>SpringBoot集成RabbitMQ</p>
-</li>
-<li><p>RabbitMQ如何保障消息不丢失的</p>
-</li>
-<li><p>RabbitMQ如何保障消息顺序调用</p>
-</li>
-<li><p>RabbitMQ如何保障高可用</p>
-</li>
-<li><p>RabbitMQ如何避免重复消费</p>
-</li>
-<li><p>RabbitMQ延时队列</p>
-</li>
-<li><p>RabbitMQ死信队列</p>
-</li>
-</ul>
+
+<p>[TOC]</p>
+<p>###1 首先查看自己的gcc版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">gcc --version</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果输出的7版本以下的话，则编译可能会失败，需要安装更高版本的gcc</span></span><br><span class="line"></span><br><span class="line">$ sudo yum install centos-release-scl</span><br><span class="line">$ sudo yum install devtoolset-7</span><br><span class="line">$ sudo yum install devtoolset-7-gcc</span><br><span class="line">$ scl <span class="built_in">enable</span> devtoolset-7 bash</span><br><span class="line"></span><br><span class="line"><span class="comment">#这个时候再输出gcc版本，应该就是7版本了</span></span><br><span class="line"></span><br><span class="line">$ gcc --version</span><br><span class="line">gcc (GCC) 7.2.1 20170829 (Red Hat 7.2.1-1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置永久生效</span></span><br><span class="line">$ <span class="built_in">source</span> /opt/rh/devtoolset-7/<span class="built_in">enable</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">$ <span class="built_in">source</span> scl_source <span class="built_in">enable</span> devtoolset-7</span><br></pre></td></tr></table></figure>
+
+<p>###2 下载最新的redis,并进行安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入到下载目录</span></span><br><span class="line">$ <span class="built_in">cd</span> /usr/download</span><br><span class="line"></span><br><span class="line"><span class="comment">#下载最新的安装包</span></span><br><span class="line">$ wget http://download.redis.io/redis-stable.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment">#解压</span></span><br><span class="line">$ tar -xzvf redis-stable.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment">#编译</span></span><br><span class="line">$ <span class="built_in">cd</span> redis-stable</span><br><span class="line">$ make</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装到 /opt/redis下</span></span><br><span class="line">$ <span class="built_in">cd</span> src</span><br><span class="line">$ make install PREFIX=/opt/redis</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将配置文件拷贝到/opt/redis下</span></span><br><span class="line">$ cp redis.conf /opt/redis</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将redis设置为开机启动</span></span><br><span class="line">$ vi /etc/rc.local</span><br><span class="line"></span><br><span class="line"><span class="comment">##在里面添加内容：</span></span><br><span class="line">/opt/redis/bin/redis-server /opt/redis/redis.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启远程访问</span></span><br><span class="line">$ vim /opt/redis/redis.conf</span><br><span class="line"><span class="comment">## 将文件中 protected-mode改为 no， 注释掉bind 127.0.0.1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#启动redis</span></span><br><span class="line"></span><br><span class="line">$ /opt/redis/bin/redis-server /opt/redis/redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>###3. 如何卸载Redis</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ rm -rf /opt/redis //删除安装目录</span><br><span class="line">$ rm -rf /usr/bin/redis-* //删除所有redis相关命令脚本</span><br><span class="line">$ rm -rf /usr/download/redis-* //删除redis解压文件夹</span><br></pre></td></tr></table></figure>
+
 
     </div>
     
@@ -250,15 +235,15 @@ RabbitMQ如何...">
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/redisDataType/" class="pre-post btn btn-default" title='Redis数据类型'>
+        <a href="/gitAccountConfig/" class="pre-post btn btn-default" title='git多账户配置'>
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">Redis数据类型</span>
+            <span class="hidden-xs">git多账户配置</span>
         </a>
     
     
-        <a href="/whatIsRabbitMQ/" class="next-post btn btn-default" title='初识RabbitMQ'>
+        <a href="/install_gitlab/" class="next-post btn btn-default" title='linux下gitlab安装及汉化'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">初识RabbitMQ</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">linux下gitlab安装及汉化</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
