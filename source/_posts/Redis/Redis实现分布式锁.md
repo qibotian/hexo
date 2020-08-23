@@ -2,7 +2,7 @@
 title: Redis实现分布式锁
 date: 2020-05-27
 categories: ['Redis']
-tags: [Redis','分布式锁','setNx','RedLock']
+tags: ['Redis','分布式锁','setNx','RedLock']
 comments: true
 id: useRedisDoDistributeLock
 ---
