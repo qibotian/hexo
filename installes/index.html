@@ -240,7 +240,7 @@
 </ul>
 <ul>
 <li><p>elasticsearch 跨越设置<br>  在<code>\config\elasticsearch.yml</code>最下面加入以下设置  </p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">http.cors.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="string">http.cors.allow-origin:</span> <span class="string">"*"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http.cors.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">http.cors.allow-origin:</span> <span class="string">"*"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>ik 分词器安装</p>
 <ul>
@@ -266,7 +266,7 @@
 </ul>
 <ul>
 <li><p>kibana汉化<br>在<code>config\kinaba.yml</code>中添加以下代码</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">i18n.locale:</span> <span class="string">"zh-CN"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">i18n.locale:</span> <span class="string">"zh-CN"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>启动kibana,并测试<br>Kibana 是通向 Elastic 产品集的窗口。 它可以在 Elasticsearch 中对数据进行视觉探索和实时分析。<br>运行<code>bin\kibana.bat</code>, 并访问 <code>localhost:5601</code></p>
 </li>
